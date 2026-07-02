@@ -8,7 +8,6 @@ import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
 
 function App() {
-  console.log('changes');
   return (
     <>
       <Hero />
