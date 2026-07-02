@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=Six+Caps&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@500,600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Clash Display', sans-serif;
+  --font-caps: 'Six Caps', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+
+  --color-brand-bg: #dfe4e8;
+  --color-brand-ink: #030303;
+  --color-brand-ink-2: #0e1011;
+  --color-brand-gray-600: #4b4f52;
+  --color-brand-gray-400: #7b8186;
+  --color-brand-gray-300: #b1bac2;
+  --color-brand-dark: #050a0c;
+  --color-brand-dark-border: #292929;
+  --color-brand-light-text: #c2c2c2;
+  --color-brand-red: #fe0000;
+
+  --container-max: 1720px;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--color-brand-bg);
+  font-family: var(--font-body);
+  font-optical-sizing: auto;
+  color: var(--color-brand-ink);
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+@layer components {
+  .pill-button {
+    @apply inline-flex items-center justify-center gap-10 rounded-[27px] px-[30px] py-4 text-sm uppercase tracking-[0.5px] whitespace-nowrap transition-opacity duration-200 hover:opacity-75;
+  }
+  .pill-button img {
+    @apply h-4 w-4 shrink-0;
+  }
+  .pill-button--solid {
+    @apply bg-white text-brand-ink-2;
+  }
+  .pill-button--outline {
+    @apply flex w-fit border border-[rgba(14,16,17,0.15)] text-brand-ink-2;
+  }
+  .pill-button--outline-light {
+    @apply shrink-0 border border-white/15 text-white;
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 1, 0.35, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay.is-visible {
+  transition-delay: 0.15s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ===================== Portfolio scroll-depth effect =====================
+   Driven imperatively via refs in usePortfolioScroll (continuous scroll-
+   linked transforms don't map cleanly onto conditional Tailwind classes),
+   so these classes need to exist as real CSS rather than @apply utilities. */
+
+.portfolio-card {
+  transition: opacity 0.35s ease;
+}
+
+.portfolio-card__link,
+.portfolio-card__footer {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.portfolio-card.is-front .portfolio-card__link,
+.portfolio-card.is-front .portfolio-card__footer {
+  opacity: 1;
+}
+
+.portfolio-card.is-done {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.portfolio__counter-roller {
+  transform: translateY(var(--roll, 0px));
+  transition: transform 0.35s ease;
+}
+
+@media (max-width: 960px) {
+  .portfolio-card {
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+    z-index: auto !important;
+    width: 100% !important;
+    height: 320px;
+  }
+}
+
+/* ===================== Testimonials deck-cycling effect =====================
+   Same rationale as the portfolio effect above: role/arrival classes are
+   toggled imperatively via refs in useTestimonialDeck. */
+
+.testimonial-card {
+  transform: translate(-50%, -50%) translate(var(--dx, 0px), var(--dy, 30px)) rotate(var(--rot, 0deg))
+    scale(var(--scale, 0.95));
+  opacity: var(--op, 1);
+  z-index: var(--z, 1);
+  pointer-events: var(--pe, auto);
+}
+
+.testimonial-card.is-active {
+  --dx: 0px;
+  --rot: 0deg;
+  --op: 1;
+  --z: 3;
+  --pe: auto;
+}
+
+.testimonial-card.is-peek {
+  --dx: 0px;
+  --rot: -5deg;
+  --op: 0.5;
+  --z: 1;
+  --pe: none;
+}
+
+.testimonial-card.is-hidden {
+  --dx: 0px;
+  --rot: 0deg;
+  --op: 1;
+  --z: 1;
+  --pe: none;
+}
+
+/* Arrival animations replicate the reference carousel: the swing direction
+   and arc shape depend only on the destination role, not on prev/next or
+   the card's origin role. */
+
+@keyframes arriveAsActive {
+  14% { transform: translate(-50%, -50%) translate(-210px, 30px) rotate(0deg) scale(0.95); opacity: 1; z-index: 3; }
+  27% { transform: translate(-50%, -50%) translate(-281px, 30px) rotate(0deg) scale(0.95); opacity: 1; z-index: 3; }
+  45% { transform: translate(-50%, -50%) translate(-300px, 30px) rotate(0deg) scale(0.95); opacity: 1; z-index: 3; }
+  73% { transform: translate(-50%, -50%) translate(-25px, 30px) rotate(0deg) scale(0.95); opacity: 1; z-index: 3; }
+  100% { transform: translate(-50%, -50%) translate(0px, 30px) rotate(0deg) scale(0.95); opacity: 1; z-index: 3; }
+}
+
+@keyframes arriveAsPeek {
+  14% { transform: translate(-50%, -50%) translate(210px, 30px) rotate(3.5deg) scale(0.95); opacity: 1; z-index: 5; }
+  27% { transform: translate(-50%, -50%) translate(281px, 30px) rotate(5deg) scale(0.95); opacity: 1; z-index: 1; }
+  45% { transform: translate(-50%, -50%) translate(300px, 30px) rotate(5deg) scale(0.95); opacity: 1; z-index: 1; }
+  73% { transform: translate(-50%, -50%) translate(186px, 30px) rotate(1.5deg) scale(0.95); opacity: 0.76; z-index: 1; }
+  100% { transform: translate(-50%, -50%) translate(0px, 30px) rotate(-5deg) scale(0.95); opacity: 0.5; z-index: 1; }
+}
+
+@keyframes arriveAsHidden {
+  14% { transform: translate(-50%, -50%) translate(-240px, 30px) rotate(-4deg) scale(0.95); opacity: 1; z-index: 1; }
+  27% { transform: translate(-50%, -50%) translate(-292px, 30px) rotate(-5deg) scale(0.95); opacity: 1; z-index: 1; }
+  45% { transform: translate(-50%, -50%) translate(-300px, 30px) rotate(-5deg) scale(0.95); opacity: 1; z-index: 1; }
+  73% { transform: translate(-50%, -50%) translate(-26px, 30px) rotate(0deg) scale(0.95); opacity: 1; z-index: 1; }
+  100% { transform: translate(-50%, -50%) translate(0px, 30px) rotate(0deg) scale(0.95); opacity: 1; z-index: 1; }
+}
+
+.testimonial-card.arrive-active { animation: arriveAsActive 1.1s linear forwards; }
+.testimonial-card.arrive-peek { animation: arriveAsPeek 1.1s linear forwards; }
+.testimonial-card.arrive-hidden { animation: arriveAsHidden 1.1s linear forwards; }
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-card.arrive-active,
+  .testimonial-card.arrive-peek,
+  .testimonial-card.arrive-hidden {
+    animation: none;
+  }
+}
