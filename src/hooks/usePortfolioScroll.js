@@ -27,7 +27,7 @@ export function usePortfolioScroll(total) {
     const stack = stackRef.current;
     if (!stack) return;
 
-    const mq = window.matchMedia('(max-width: 960px)');
+    const mq = window.matchMedia('(max-width: 1023px)');
 
     function render(progress) {
       let activeIndex = 0;

@@ -61,15 +61,15 @@ const LOGOS = [
 
 export default function Clients() {
   return (
-    <section className="mx-auto max-w-(--container-max) px-[100px] py-[60px] text-center">
-      <p className="m-0 mb-10 font-display text-xl font-medium tracking-[0.8px] text-brand-ink-2 uppercase">
+    <section className="mx-auto max-w-(--container-max) px-5 py-10 text-center md:px-8 md:py-12 lg:px-[100px] lg:py-[60px]">
+      <p className="m-0 mb-8 font-display text-base font-medium tracking-[0.8px] text-brand-ink-2 uppercase md:mb-10 md:text-xl">
         Trusted by 1900+ Companies
       </p>
-      <div className="flex flex-wrap items-center justify-between gap-x-10 gap-y-8">
+      <div className="grid grid-cols-2 place-items-center gap-x-6 gap-y-8 sm:grid-cols-3 md:grid-cols-4 lg:flex lg:flex-wrap lg:items-center lg:justify-between lg:gap-x-10 lg:gap-y-8">
         {LOGOS.map((logo) => (
           <span
             key={logo.name}
-            className="relative block shrink-0 [&_img]:block"
+            className="relative block shrink-0 scale-90 sm:scale-100 [&_img]:block"
             style={{ width: logo.width, height: logo.height }}
           >
             {logo.fragments.map((frag, i) => (

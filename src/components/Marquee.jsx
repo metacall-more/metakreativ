@@ -2,7 +2,7 @@ const ITEMS = ['Design Beyond Limits', 'Crafting Tomorrow’s', 'Beyond The Ordi
 
 export default function Marquee() {
   return (
-    <div className="mx-auto flex max-w-(--container-max) flex-wrap items-center justify-center gap-[60px] py-[30px] font-display text-[30px] font-medium text-brand-ink-2 uppercase">
+    <div className="mx-auto flex max-w-(--container-max) flex-wrap items-center justify-center gap-6 px-5 py-6 font-display text-[clamp(16px,4vw,30px)] font-medium text-brand-ink-2 uppercase md:gap-10 md:px-8 md:py-[30px] lg:gap-[60px] lg:px-0">
       {ITEMS.map((item, i) => (
         <span key={item} className="contents">
           <span>{item}</span>

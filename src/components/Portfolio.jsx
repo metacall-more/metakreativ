@@ -42,19 +42,19 @@ export default function Portfolio() {
   const { stackRef, setCardRef, rollerRef } = usePortfolioScroll(PROJECTS.length);
 
   return (
-    <section className="mx-auto max-w-(--container-max) border-t border-brand-gray-300 px-0 pt-[30px] pb-[60px]">
-      <div className="flex justify-between pt-[27px] font-display text-sm font-medium tracking-[1.4px] uppercase">
+    <section className="mx-auto max-w-(--container-max) border-t border-brand-gray-300 px-5 pt-6 pb-10 md:px-8 md:pt-[30px] md:pb-[50px] lg:px-0 lg:pb-[60px]">
+      <div className="flex flex-col gap-3 pt-5 font-display text-xs font-medium tracking-[1.4px] uppercase sm:flex-row sm:justify-between sm:pt-[27px] sm:text-sm">
         <span>// Showcasing Our Outstanding Projects</span>
         <span>PRECISION. SCALE. LEGACY.</span>
       </div>
 
-      <div className="mt-[30px] text-center">
-        <h2 className="m-0 font-caps text-[clamp(70px,10vw,180px)] leading-[0.9] uppercase">The Meta Edition</h2>
+      <div className="mt-6 text-center md:mt-[30px]">
+        <h2 className="m-0 font-caps text-[clamp(48px,10vw,180px)] leading-[0.9] uppercase">The Meta Edition</h2>
         <div className="mt-5 border-t border-brand-gray-300" />
       </div>
 
-      <div className="flex items-center justify-between gap-6 max-[960px]:flex-col max-[960px]:items-stretch">
-        <div className="h-5 shrink-0 overflow-hidden font-display text-lg font-medium tracking-[0.9px] max-[960px]:hidden">
+      <div className="flex items-center justify-between gap-6 max-lg:flex-col max-lg:items-stretch">
+        <div className="h-5 shrink-0 overflow-hidden font-display text-lg font-medium tracking-[0.9px] max-lg:hidden">
           <div ref={rollerRef} className="portfolio__counter-roller flex flex-col">
             {PROJECTS.map((_, i) => (
               <span key={i} className="h-5 leading-5">
@@ -66,25 +66,25 @@ export default function Portfolio() {
 
         <div
           ref={stackRef}
-          className="relative mx-auto my-[90px] h-[calc(min(700px,62vh)+150px)] w-[min(1300px,84vw)] overflow-hidden [perspective:1000px] [perspective-origin:50%_-55%] max-[960px]:my-10 max-[960px]:flex max-[960px]:h-auto max-[960px]:w-full max-[960px]:flex-col max-[960px]:gap-5 max-[960px]:![perspective:none]"
+          className="relative mx-auto my-10 h-[calc(min(700px,62vh)+150px)] w-[min(1300px,84vw)] overflow-hidden [perspective:1000px] [perspective-origin:50%_-55%] max-lg:my-10 max-lg:flex max-lg:h-auto max-lg:w-full max-lg:flex-col max-lg:gap-5 max-lg:![perspective:none]"
         >
           {PROJECTS.map((project, i) => (
             <article
               key={i}
               ref={setCardRef(i)}
-              className="portfolio-card absolute top-[150px] right-0 bottom-0 left-0 overflow-hidden rounded-[20px] bg-brand-gray-600 will-change-transform"
+              className="portfolio-card absolute top-[150px] right-0 bottom-0 left-0 overflow-hidden rounded-[20px] bg-brand-gray-600 will-change-transform max-lg:top-auto max-lg:right-auto max-lg:bottom-auto max-lg:left-auto"
             >
               <img className="absolute inset-0 h-full w-full object-cover" src={project.img} alt={project.alt} />
               <div className="absolute inset-0 bg-linear-to-b from-black/0 from-50% to-black/40" />
               <button
-                className="portfolio-card__link absolute left-[50px] bottom-[50px] z-2 flex h-20 w-20 items-center justify-center rounded-full bg-brand-bg"
+                className="portfolio-card__link absolute left-[50px] bottom-[50px] z-2 flex h-20 w-20 items-center justify-center rounded-full bg-brand-bg max-lg:opacity-100"
                 aria-label="Open project"
               >
                 <img className="h-4 w-4" src={project.icon} alt="" />
               </button>
-              <div className="portfolio-card__footer absolute right-[50px] bottom-5 left-[50px] z-2 flex flex-wrap items-end justify-between gap-6">
-                <h3 className="m-0 font-display text-2xl font-semibold text-brand-bg uppercase">{project.title}</h3>
-                <div className="flex items-center gap-4 text-sm tracking-[0.7px] text-brand-bg uppercase">
+              <div className="portfolio-card__footer absolute right-[50px] bottom-5 left-[50px] z-2 flex flex-wrap items-end justify-between gap-4 max-lg:opacity-100 sm:gap-6">
+                <h3 className="m-0 font-display text-lg font-semibold text-brand-bg uppercase sm:text-2xl">{project.title}</h3>
+                <div className="flex flex-wrap items-center gap-3 text-xs tracking-[0.7px] text-brand-bg uppercase sm:gap-4 sm:text-sm">
                   {project.tags.map((tag, ti) => (
                     <span key={tag} className="contents">
                       {ti > 0 && <span className="h-[5px] w-[5px] rounded-full bg-current" />}
@@ -97,7 +97,7 @@ export default function Portfolio() {
           ))}
         </div>
 
-        <span className="shrink-0 font-display text-lg font-medium tracking-[0.9px] max-[960px]:hidden">
+        <span className="shrink-0 font-display text-lg font-medium tracking-[0.9px] max-lg:hidden">
           / {String(PROJECTS.length).padStart(2, '0')}
         </span>
       </div>
