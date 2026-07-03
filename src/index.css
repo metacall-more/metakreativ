@@ -201,3 +201,75 @@ img {
     animation: none;
   }
 }
+
+
+/* under custroction */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Inter, system-ui, Arial;
+}
+
+body {
+  background: radial-gradient(circle at top, #111827, #0b0f19);
+  color: white;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  text-align: center;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.icon {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-bottom: 20px;
+}
+
+.loader {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 20px;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  border-top: 4px solid #60a5fa;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.footer {
+  font-size: 12px;
+  opacity: 0.5;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* under custroction */

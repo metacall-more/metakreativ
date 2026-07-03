@@ -9,8 +9,6 @@ import Footer from './components/Footer';
 import UnderConstruction from './components/UnderConstruction';
 
 function App() {
-  // return <UnderConstruction />;
-
   return (
     <>
       <Hero />
