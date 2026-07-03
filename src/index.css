@@ -21,10 +21,15 @@
   --container-max: 1720px;
 }
 
-html, body {
-  margin: 0;
-  padding: 0;
+@keyframes loader {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(320%);
+  }
 }
+
 
 body {
   background: var(--color-brand-bg);
