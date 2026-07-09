@@ -53,7 +53,7 @@ export default function ProjectDetailPage() {
       <ProjectTestimonial {...project.testimonial} />
       <ProjectMoreProjects projects={project.moreProjects} />
 
-      <PageCta image="/assets/images/services/cta-bg.jpg" />
+      <PageCta image="/assets/images/services/cta-bg.webp" />
       <Footer />
     </div>
   );

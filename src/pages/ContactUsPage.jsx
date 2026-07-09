@@ -16,7 +16,7 @@ export default function ContactUsPage() {
       <ContactMap />
       <ContactSection />
 
-      <PageCta image="/assets/images/services/cta-bg.jpg" />
+      <PageCta image="/assets/images/services/cta-bg.webp" />
       <Footer />
     </div>
   );

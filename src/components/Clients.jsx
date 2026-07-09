@@ -59,24 +59,35 @@ const LOGOS = [
   },
 ];
 
+function ClientLogo({ logo }) {
+  return (
+    <span
+      className="relative block shrink-0 [&_img]:block"
+      style={{ width: logo.width, height: logo.height }}
+    >
+      {logo.fragments.map((frag, i) => (
+        <img key={i} src={frag.src} alt={i === 0 ? logo.name : ''} className="absolute" style={frag.style} />
+      ))}
+    </span>
+  );
+}
+
 export default function Clients() {
   return (
     <section className="mx-auto max-w-(--container-max) px-5 py-10 text-center md:px-8 md:py-12 lg:px-[100px] lg:py-[60px]">
       <p className="m-0 mb-8 font-display text-base font-medium tracking-[0.8px] text-brand-ink-2 uppercase md:mb-10 md:text-xl">
         Trusted by 1900+ Companies
       </p>
-      <div className="grid grid-cols-2 place-items-center gap-x-6 gap-y-8 sm:grid-cols-3 md:grid-cols-4 lg:flex lg:flex-wrap lg:items-center lg:justify-between lg:gap-x-10 lg:gap-y-8">
-        {LOGOS.map((logo) => (
-          <span
-            key={logo.name}
-            className="relative block shrink-0 scale-90 sm:scale-100 [&_img]:block"
-            style={{ width: logo.width, height: logo.height }}
-          >
-            {logo.fragments.map((frag, i) => (
-              <img key={i} src={frag.src} alt={i === 0 ? logo.name : ''} className="absolute" style={frag.style} />
-            ))}
-          </span>
-        ))}
+      <div className="clients-marquee relative left-1/2 w-screen -translate-x-1/2 overflow-hidden py-8 md:py-10">
+        <div className="clients-marquee__track flex w-max items-center">
+          {[0, 1].map((set) =>
+            LOGOS.map((logo) => (
+              <div key={`${logo.name}-${set}`} className="clients-marquee__item flex shrink-0 items-center justify-center px-8 md:px-12">
+                <ClientLogo logo={logo} />
+              </div>
+            )),
+          )}
+        </div>
       </div>
     </section>
   );

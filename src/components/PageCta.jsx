@@ -1,4 +1,4 @@
-export default function PageCta({ image = '/assets/images/services/cta-bg.jpg' }) {
+export default function PageCta({ image = '/assets/images/services/cta-bg.webp' }) {
   return (
     <section className="mx-auto max-w-[calc(var(--container-max)+120px)] px-5 py-10 md:px-8 md:py-14 lg:px-[60px] lg:py-16">
       <div className="relative flex min-h-[min(360px,55vw)] items-center justify-center overflow-hidden rounded-[20px] md:min-h-[420px] lg:min-h-[520px]">

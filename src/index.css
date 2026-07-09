@@ -81,12 +81,28 @@ img {
 }
 
 /* ===================== Portfolio scroll-depth effect =====================
-   Driven imperatively via refs in usePortfolioScroll (continuous scroll-
-   linked transforms don't map cleanly onto conditional Tailwind classes),
-   so these classes need to exist as real CSS rather than @apply utilities. */
+   Driven imperatively via refs in usePortfolioScroll (scroll-pinned
+   vertical page-flip). */
+
+.portfolio-pin__stage {
+  align-self: flex-start;
+  width: 100%;
+}
+
+.portfolio-stack {
+  perspective: 1400px;
+  perspective-origin: 50% 18%;
+  transform-style: preserve-3d;
+}
 
 .portfolio-card {
-  transition: opacity 0.35s ease;
+  transform-origin: center top;
+  backface-visibility: hidden;
+  pointer-events: none;
+}
+
+.portfolio-card.is-front {
+  pointer-events: auto;
 }
 
 .portfolio-card__link,
@@ -100,14 +116,8 @@ img {
   opacity: 1;
 }
 
-.portfolio-card.is-done {
-  opacity: 0;
-  pointer-events: none;
-}
-
 .portfolio__counter-roller {
-  transform: translateY(var(--roll, 0px));
-  transition: transform 0.35s ease;
+  will-change: transform;
 }
 
 @media (max-width: 1023px) {
@@ -115,9 +125,84 @@ img {
     position: relative !important;
     inset: auto !important;
     transform: none !important;
+    opacity: 1 !important;
     z-index: auto !important;
     width: 100% !important;
     height: 320px;
+    pointer-events: auto !important;
+  }
+}
+
+/* ===================== Clients marquee ===================== */
+
+@keyframes clientsMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.clients-marquee__track {
+  animation: clientsMarquee 50s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clients-marquee__track {
+    animation: none;
+  }
+}
+
+/* ===================== Text marquee ===================== */
+
+@keyframes textMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.text-marquee__track {
+  animation: textMarquee 35s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .text-marquee__track {
+    animation: none;
+  }
+}
+
+/* ===================== Services ticker ===================== */
+
+.services-ticker__track {
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.35, 1);
+}
+
+.services-card__text {
+  animation: servicesCardFade 0.45s ease;
+}
+
+@keyframes servicesCardFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .services-ticker__track {
+    transition: none;
+  }
+
+  .services-card__text {
+    animation: none;
   }
 }
 

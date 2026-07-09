@@ -31,9 +31,7 @@ export default function ServiceBlock({ service, index }) {
         </h2>
 
         <div
-          className={`mt-8 flex flex-col gap-8 md:mt-10 md:gap-10 lg:mt-12 lg:gap-12 ${
-            imageFirst ? 'lg:flex-row' : 'lg:flex-row-reverse'
-          }`}
+          className={`mt-8 flex flex-col gap-8 md:mt-10 md:gap-10 lg:mt-12 lg:gap-12 lg:flex-row `}
         >
           <div className="w-full shrink-0 overflow-hidden rounded-lg lg:w-[48%] xl:w-[52%]">
             <img

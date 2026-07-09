@@ -44,7 +44,7 @@ export default function Nav({ theme = 'dark', activeLink }) {
   return (
     <>
       <nav
-        className={`relative mx-auto flex max-w-(--container-max) items-center gap-10 px-5 pt-[30px] md:px-8 lg:z-[3] lg:px-0 ${open ? 'z-[61]' : 'z-[3]'}`}
+        className={`mb-4 relative mx-auto flex max-w-(--container-max) items-center gap-10 px-5 pt-[30px] md:px-8 lg:z-[3] lg:px-0 ${open ? 'z-[61]' : 'z-[3]'}`}
       >
         <Link to="/" aria-label="Meta Kreativ home">
           <Logo theme={theme} />

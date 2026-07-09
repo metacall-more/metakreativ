@@ -2,13 +2,55 @@ import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getLayoutClass, PORTFOLIO_PROJECTS } from '../../data/portfolioPage';
 
-const ITEMS_PER_PAGE = 8;
+const INITIAL_VISIBLE = 9;
+const LOAD_MORE_COUNT = 6;
+
+function LoadMoreIcon() {
+  return (
+    <svg
+      className="h-4 w-4 shrink-0"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        d="M13.2 8A5.2 5.2 0 0 0 4.9 4.9L4 4"
+        stroke="currentColor"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M4 4V7.2H7.2"
+        stroke="currentColor"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M2.8 8A5.2 5.2 0 0 0 11.1 11.1L12 12"
+        stroke="currentColor"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M12 12V8.8H8.8"
+        stroke="currentColor"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
 export default function PortfolioMasonry({ activeFilter }) {
-  const [page, setPage] = useState(1);
+  const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE);
 
   useEffect(() => {
-    setPage(1);
+    setVisibleCount(INITIAL_VISIBLE);
   }, [activeFilter]);
 
   const filteredProjects = useMemo(() => {
@@ -16,22 +58,18 @@ export default function PortfolioMasonry({ activeFilter }) {
     return PORTFOLIO_PROJECTS.filter((project) => project.category === activeFilter);
   }, [activeFilter]);
 
-  const totalPages = Math.max(1, Math.ceil(filteredProjects.length / ITEMS_PER_PAGE));
-  const currentPage = Math.min(page, totalPages);
-  const visibleProjects = filteredProjects.slice(
-    (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE
-  );
+  const visibleProjects = filteredProjects.slice(0, visibleCount);
+  const hasMore = visibleCount < filteredProjects.length;
 
   return (
-    <section className="mx-auto max-w-(--container-max) px-5 py-10 md:px-8 md:py-12 lg:px-0 lg:py-16">
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:auto-rows-[220px] md:grid-cols-3 md:gap-6 lg:auto-rows-[260px]">
+    <section className="mx-auto max-w-(--container-max) px-5 pb-12 md:px-8 md:pb-16 lg:px-0 lg:pb-20">
+      <div className="grid grid-flow-dense grid-cols-1 gap-4 sm:grid-cols-2 md:auto-rows-[200px] md:grid-cols-3 md:gap-5 lg:auto-rows-[240px] lg:gap-6">
         {visibleProjects.map((project) => {
-          const className = `group relative overflow-hidden rounded-lg bg-brand-gray-300 ${getLayoutClass(project.layout)}`;
+          const className = `group relative overflow-hidden bg-brand-gray-300 ${getLayoutClass(project.layout)}`;
           const content = (
             <>
               <img
-                className="h-full min-h-[220px] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03] md:min-h-0 md:h-full"
+                className="h-full min-h-[220px] w-full object-cover transition-transform duration-500 group-hover:scale-[1.02] md:min-h-0 md:h-full"
                 src={project.image}
                 alt={project.title}
               />
@@ -64,47 +102,17 @@ export default function PortfolioMasonry({ activeFilter }) {
         </p>
       )}
 
-      {totalPages > 1 && (
-        <nav
-          className="mt-12 flex items-center justify-center gap-4 font-display text-sm font-medium tracking-[1px] text-brand-ink-2"
-          aria-label="Portfolio pagination"
-        >
+      {hasMore && (
+        <div className="mt-12 flex justify-center md:mt-16">
           <button
             type="button"
-            onClick={() => setPage((p) => Math.max(1, p - 1))}
-            disabled={currentPage === 1}
-            className="transition-opacity hover:opacity-60 disabled:opacity-30"
-            aria-label="Previous page"
+            onClick={() => setVisibleCount((count) => count + LOAD_MORE_COUNT)}
+            className="inline-flex items-center gap-3 rounded-full bg-[#d2d7db] px-8 py-4 font-display text-xs font-medium tracking-[1.4px] text-brand-ink-2 uppercase transition-opacity hover:opacity-75 md:text-sm"
           >
-            &lt;
+            Load More
+            <LoadMoreIcon />
           </button>
-
-          {Array.from({ length: totalPages }).map((_, i) => {
-            const pageNumber = i + 1;
-            return (
-              <button
-                key={pageNumber}
-                type="button"
-                onClick={() => setPage(pageNumber)}
-                className={`min-w-6 transition-opacity hover:opacity-60 ${
-                  currentPage === pageNumber ? 'text-brand-red' : ''
-                }`}
-              >
-                {pageNumber}
-              </button>
-            );
-          })}
-
-          <button
-            type="button"
-            onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
-            disabled={currentPage === totalPages}
-            className="transition-opacity hover:opacity-60 disabled:opacity-30"
-            aria-label="Next page"
-          >
-            &gt;
-          </button>
-        </nav>
+        </div>
       )}
     </section>
   );

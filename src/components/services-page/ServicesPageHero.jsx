@@ -4,12 +4,12 @@ export default function ServicesPageHero() {
       <div className="relative min-h-[min(500px,70vw)] overflow-hidden rounded-[20px]">
         <img
           className="absolute inset-0 h-full w-full object-cover object-center"
-          src="/assets/images/services/services-hero.jpg"
+          src="/assets/images/services/services-hero.webp"
           alt=""
         />
         <div className="absolute inset-0 bg-linear-to-r from-[rgba(5,8,12,0.75)] via-[rgba(5,8,12,0.45)] to-[rgba(254,0,0,0.25)]" />
 
-        <div className="relative z-[1] flex min-h-[min(500px,70vw)] flex-col justify-end gap-8 px-5 pb-10 pt-24 md:px-10 md:pb-12 lg:flex-row lg:items-end lg:justify-between lg:px-20 lg:pb-16 lg:pt-32">
+        {/* <div className="relative z-[1] flex min-h-[min(500px,70vw)] flex-col justify-end gap-8 px-5 pb-10 pt-24 md:px-10 md:pb-12 lg:flex-row lg:items-end lg:justify-between lg:px-20 lg:pb-16 lg:pt-32">
           <div className="flex items-center gap-2 font-body text-base text-white">
             <span className="flex gap-0.5" aria-hidden="true">
               <span className="h-3 w-px rotate-[17deg] bg-white" />
@@ -23,7 +23,7 @@ export default function ServicesPageHero() {
             <br />
             into masterpieces
           </h1>
-        </div>
+        </div> */}
       </div>
     </section>
   );

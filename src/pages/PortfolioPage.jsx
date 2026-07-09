@@ -19,7 +19,7 @@ export default function PortfolioPage() {
       <PortfolioFilters activeFilter={activeFilter} onFilterChange={setActiveFilter} />
       <PortfolioMasonry activeFilter={activeFilter} />
 
-      <PageCta image="/assets/images/services/cta-bg.jpg" />
+      <PageCta image="/assets/images/services/cta-bg.webp" />
       <Footer />
     </div>
   );

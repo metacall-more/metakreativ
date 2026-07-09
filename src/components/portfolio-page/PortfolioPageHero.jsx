@@ -6,7 +6,7 @@ export default function PortfolioPageHero() {
       <div className="relative min-h-[min(500px,70vw)] overflow-hidden rounded-[20px]">
         <img
           className="absolute inset-0 h-full w-full object-cover object-center"
-          src="/assets/images/portfolio-page/portfolio-hero.jpg"
+          src="/assets/images/portfolio-page/portfolio-hero.webp"
           alt=""
         />
         <div className="absolute inset-0 bg-linear-to-r from-[rgba(5,8,12,0.55)] via-[rgba(5,8,12,0.25)] to-[rgba(254,0,0,0.35)]" />

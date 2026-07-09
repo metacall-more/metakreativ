@@ -4,20 +4,30 @@ export const MAP_LON = 21.14958073;
 export const CONTACT_CHANNELS = [
   {
     id: 'address',
-    label: 'Address',
-    lines: ['Mulla Idriz Gjilani, Prishtina', 'Kosovo'],
+    label: 'Address Studio',
+    lines: ['Rr. Ali Vitia 4, Pristina, Kosovo, 10000'],
     icon: 'location',
   },
   {
-    id: 'phone',
-    label: 'Phone No',
-    lines: ['+383 49 601 222', '+383 49 824 444'],
-    icon: 'phone',
-  },
-  {
-    id: 'email',
-    label: 'Email Id',
-    lines: ['info@meta-kreativ.com', 'career@meta-kreativ.com'],
+    id: 'support',
+    label: 'Support 24/7',
+    lines: ['info@metakreativ.de', 'Call Us - (234) 109-6666'],
     icon: 'email',
   },
+  {
+    id: 'hours',
+    label: 'Working Time',
+    lines: ['Monday - Friday: 8.00am - 6.00pm', 'Sat: 8.30am - 4.30pm - Holiday: Closed'],
+    icon: 'clock',
+  },
+];
+
+export const CONTACT_NEEDS_OPTIONS = [
+  'Branding & Identity',
+  'Website Design',
+  'Mobile App',
+  'Software Development',
+  'Digital Marketing',
+  'Video Production',
+  'Other',
 ];

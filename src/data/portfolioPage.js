@@ -1,21 +1,41 @@
 import { PROJECT_SLUGS } from '../data/project-details';
 
-const LAYOUT_CYCLE = ['tall', 'short', 'tall', 'wide', 'square', 'wide-right', 'large', 'stack', 'stack-right'];
+const LAYOUT_CYCLE = [
+  'short',
+  'short',
+  'tall',
+  'wide',
+  'short',
+  'wide-right',
+  'tall',
+  'short',
+  'short',
+  'short',
+  'short',
+  'short',
+];
 
 const CATEGORY_CYCLE = [
   'brand-identity',
   'web-design',
-  'graphic-design',
+  'web-design',
   'digital-marketing',
-  'app-development',
+  'brand-identity',
+  'web-design',
+  'brand-identity',
+  'mobile-app',
+  'digital-marketing',
+  'video-production',
+  'brand-identity',
+  'digital-marketing',
 ];
 
 export const PORTFOLIO_FILTERS = [
   { id: 'all', label: 'All Projects' },
-  { id: 'graphic-design', label: 'Graphic Design' },
   { id: 'brand-identity', label: 'Brand Identity' },
-  { id: 'web-design', label: 'Web Design' },
-  { id: 'app-development', label: 'App Development' },
+  { id: 'web-design', label: 'Website Design' },
+  { id: 'mobile-app', label: 'Mobile App' },
+  { id: 'video-production', label: 'Video Production' },
   { id: 'digital-marketing', label: 'Digital Marketing' },
 ];
 
@@ -40,16 +60,12 @@ export const PORTFOLIO_PROJECTS = [
 export { PROJECT_SLUGS };
 
 const LAYOUT_CLASSES = {
-  tall: 'md:col-span-1 md:row-span-2',
   short: 'md:col-span-1 md:row-span-1',
+  tall: 'md:col-span-1 md:row-span-2',
   wide: 'md:col-span-2 md:row-span-1',
-  'wide-right': 'md:col-span-2 md:row-span-1',
-  square: 'md:col-span-1 md:row-span-1',
-  large: 'md:col-span-1 md:row-span-2',
-  stack: 'md:col-span-1 md:row-span-1',
-  'stack-right': 'md:col-span-1 md:row-span-1',
+  'wide-right': 'md:col-start-2 md:col-span-2 md:row-span-1',
 };
 
 export function getLayoutClass(layout) {
-  return LAYOUT_CLASSES[layout] ?? '';
+  return LAYOUT_CLASSES[layout] ?? LAYOUT_CLASSES.short;
 }

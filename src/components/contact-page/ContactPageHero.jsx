@@ -4,7 +4,7 @@ export default function ContactPageHero() {
       <div className="relative min-h-[min(500px,70vw)] overflow-hidden rounded-[20px]">
         <img
           className="absolute inset-0 h-full w-full object-cover object-center"
-          src="/assets/images/contact-page/contact-hero.jpg"
+          src="/assets/images/contact-page/contact-hero.webp"
           alt=""
         />
         <div className="absolute inset-0 bg-linear-to-r from-[rgba(5,8,12,0.55)] via-[rgba(5,8,12,0.2)] to-[rgba(5,8,12,0.35)]" />
