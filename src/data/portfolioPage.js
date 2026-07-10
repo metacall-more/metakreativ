@@ -1,35 +1,5 @@
 import { PROJECT_SLUGS } from '../data/project-details';
 
-const LAYOUT_CYCLE = [
-  'short',
-  'short',
-  'tall',
-  'wide',
-  'short',
-  'wide-right',
-  'tall',
-  'short',
-  'short',
-  'short',
-  'short',
-  'short',
-];
-
-const CATEGORY_CYCLE = [
-  'brand-identity',
-  'web-design',
-  'web-design',
-  'digital-marketing',
-  'brand-identity',
-  'web-design',
-  'brand-identity',
-  'mobile-app',
-  'digital-marketing',
-  'video-production',
-  'brand-identity',
-  'digital-marketing',
-];
-
 export const PORTFOLIO_FILTERS = [
   { id: 'all', label: 'All Projects' },
   { id: 'brand-identity', label: 'Brand Identity' },
@@ -39,23 +9,104 @@ export const PORTFOLIO_FILTERS = [
   { id: 'digital-marketing', label: 'Digital Marketing' },
 ];
 
+/**
+ * Mosaic order matches the portfolio page reference:
+ * [short][short][tall]
+ * [wide······][tall]
+ * [short][wide-right····]
+ * [tall][short][short]
+ * [tall][short][short]
+ */
 export const PORTFOLIO_PROJECTS = [
-  { slug: 'loni-dekor', title: 'Loni Dekor' },
-  { slug: 'wynthorpe', title: 'Wynthorpe' },
-  { slug: 'gorilla', title: 'Gorilla' },
-  { slug: 'hiti-kamina', title: 'Hiti Kamina' },
-  { slug: 'green-residence', title: 'Green Residence' },
-  { slug: 'anniken', title: 'Anniken' },
-  { slug: 'lissus', title: 'Lissus' },
-  { slug: 'ed-remodeling', title: 'ED Remodeling' },
-  { slug: 'golden-rent', title: 'Golden Rent' },
-].map((project, index) => ({
-  id: index + 1,
-  ...project,
-  image: `/assets/images/project-details/${project.slug}/hero.jpg`,
-  category: CATEGORY_CYCLE[index % CATEGORY_CYCLE.length],
-  layout: LAYOUT_CYCLE[index % LAYOUT_CYCLE.length],
-}));
+  {
+    id: 1,
+    slug: 'gorilla',
+    title: 'Gorilla',
+    image: '/assets/images/portfolio-page/gorilla-img.webp',
+    category: 'web-design',
+    layout: 'short',
+  },
+  {
+    id: 2,
+    slug: 'golden-rent',
+    title: 'Golden Rent',
+    image: '/assets/images/portfolio-page/goldenrentacar-img.webp',
+    category: 'web-design',
+    layout: 'short',
+  },
+  {
+    id: 3,
+    slug: 'loni-dekor',
+    title: 'Loni Dekor',
+    image: '/assets/images/portfolio-page/lonidekor-img.webp',
+    category: 'web-design',
+    layout: 'tall',
+  },
+  {
+    id: 4,
+    slug: 'wynthorpe',
+    title: 'Wynthorpe',
+    image: '/assets/images/portfolio-page/wynthorpe-img.webp',
+    category: 'digital-marketing',
+    layout: 'wide',
+  },
+  {
+    id: 5,
+    slug: 'anniken',
+    title: 'Anniken Brinchmann',
+    image: '/assets/images/portfolio-page/annikenbrinchmann-img.webp',
+    category: 'brand-identity',
+    layout: 'short',
+  },
+  {
+    id: 6,
+    slug: 'lissus',
+    title: 'Lissus',
+    image: '/assets/images/portfolio-page/lonidekor-img.png',
+    category: 'brand-identity',
+    layout: 'wide-right',
+  },
+  {
+    id: 7,
+    slug: 'ed-remodeling',
+    title: 'ED Remodeling',
+    image: '/assets/images/portfolio-page/erremodeling-img.png',
+    category: 'web-design',
+    layout: 'tall',
+  },
+  {
+    id: 8,
+    slug: 'hiti-kamina',
+    title: 'Hiti Kamina',
+    image: '/assets/images/portfolio-page/hitikamina-img.webp',
+    category: 'web-design',
+    layout: 'short',
+  },
+  {
+    id: 9,
+    slug: null,
+    title: 'Dress by Dree',
+    image: '/assets/images/portfolio-page/image-7.webp',
+    category: 'brand-identity',
+    layout: 'short',
+  },
+  {
+    id: 10,
+    slug: 'green-residence',
+    title: 'Green Residence',
+    image: '/assets/images/portfolio-page/GreenResidence-img.webp',
+    category: 'brand-identity',
+    layout: 'short',
+  },
+  {
+    id: 11,
+    slug: null,
+    title: 'Dress by Dree',
+    image: '/assets/images/portfolio-page/Dress-by-Dree-img.webp',
+    category: 'brand-identity',
+    layout: 'short',
+  },
+];
 
 export { PROJECT_SLUGS };
 

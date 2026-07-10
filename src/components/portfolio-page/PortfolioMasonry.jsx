@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getLayoutClass, PORTFOLIO_PROJECTS } from '../../data/portfolioPage';
 
-const INITIAL_VISIBLE = 9;
+const INITIAL_VISIBLE = 11;
 const LOAD_MORE_COUNT = 6;
 
 function LoadMoreIcon() {
@@ -46,6 +46,23 @@ function LoadMoreIcon() {
   );
 }
 
+function ProjectCard({ project }) {
+  return (
+    <>
+      <img
+        className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+        src={project.image}
+        alt={project.title}
+        loading="lazy"
+      />
+      <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+      <span className="absolute bottom-5 left-5 font-display text-sm font-medium tracking-[1px] text-white uppercase opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+        {project.title}
+      </span>
+    </>
+  );
+}
+
 export default function PortfolioMasonry({ activeFilter }) {
   const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE);
 
@@ -63,35 +80,23 @@ export default function PortfolioMasonry({ activeFilter }) {
 
   return (
     <section className="mx-auto max-w-(--container-max) px-5 pb-12 md:px-8 md:pb-16 lg:px-0 lg:pb-20">
-      <div className="grid grid-flow-dense grid-cols-1 gap-4 sm:grid-cols-2 md:auto-rows-[200px] md:grid-cols-3 md:gap-5 lg:auto-rows-[240px] lg:gap-6">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 md:auto-rows-[200px] md:grid-flow-dense md:grid-cols-3 md:gap-5 lg:auto-rows-[260px] lg:gap-6 xl:auto-rows-[300px]">
         {visibleProjects.map((project) => {
-          const className = `group relative overflow-hidden bg-brand-gray-300 ${getLayoutClass(project.layout)}`;
-          const content = (
-            <>
-              <img
-                className="h-full min-h-[220px] w-full object-cover transition-transform duration-500 group-hover:scale-[1.02] md:min-h-0 md:h-full"
-                src={project.image}
-                alt={project.title}
-              />
-              <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-              <span className="absolute bottom-5 left-5 font-display text-sm font-medium tracking-[1px] text-white uppercase opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                {project.title}
-              </span>
-            </>
-          );
+          const layoutClass = activeFilter === 'all' ? getLayoutClass(project.layout) : 'md:col-span-1 md:row-span-1';
+          const className = `group relative block aspect-4/3 overflow-hidden bg-brand-gray-300 sm:aspect-auto sm:min-h-[240px] md:min-h-0 ${layoutClass}`;
 
           if (project.slug) {
             return (
               <Link key={project.id} to={`/portfolio/${project.slug}`} className={className}>
-                {content}
+                <ProjectCard project={project} />
               </Link>
             );
           }
 
           return (
-            <a key={project.id} href="#" className={className}>
-              {content}
-            </a>
+            <div key={project.id} className={className}>
+              <ProjectCard project={project} />
+            </div>
           );
         })}
       </div>

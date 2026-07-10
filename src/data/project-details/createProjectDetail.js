@@ -1,50 +1,40 @@
-const IMAGE_FILES = {
-  hero: 'hero.jpg',
-  showcaseLeft: 'showcase-left.jpg',
-  showcaseRight: 'showcase-right.jpg',
-  challengeLeft: 'challenge-left.jpg',
-  challengeRight: 'challenge-right.jpg',
-  mobile1: 'mobile-1.jpg',
-  mobile2: 'mobile-2.jpg',
-  mobile3: 'mobile-3.jpg',
-  mobile4: 'mobile-4.jpg',
-  impactWide: 'impact-wide.jpg',
-};
-
 function imagePath(slug, file) {
   return `/assets/images/project-details/${slug}/${file}`;
 }
 
+/**
+ * Shared case-study shape (identical to Loni Dekor layout).
+ * Per-project text/images can override via PROJECT_OVERRIDES.
+ */
 export function createProjectDetail(name, slug, { moreProjectSlugs = [] } = {}) {
   const title = name;
+  const base = `/assets/images/project-details/${slug}`;
 
   return {
     slug,
     meta: {
-      label: 'Projects',
+      label: 'Case Study',
       title,
-      subtitle: `A comprehensive digital solution for ${title}, focusing on high-end craftsmanship and user experience.`,
+      subtitle:
+        'A simple, yet sophisticated system that lets you focus on what really matters — creating an environment that supports you.',
       siteUrl: '#',
-      heroImage: imagePath(slug, IMAGE_FILES.hero),
+      heroImage: `${base}/hero.jpg`,
     },
     stats: [
+      { label: 'Brand', value: title },
       { label: 'Client', value: title },
-      { label: 'Services', value: 'UI/UX Design & Development' },
-      { label: 'Timeline', value: '3 Months' },
-      { label: 'Year', value: '2023' },
-      { label: 'Platform', value: 'Web / Mobile' },
-      { label: 'Location', value: 'Prishtina' },
+      { label: 'Year', value: '2024' },
+      { label: 'Role', value: 'Digital Design & Development' },
+      { label: 'Category', value: 'E-commerce' },
+      { label: 'Location', value: 'Albania' },
     ],
     intro: `Building a digital presence for a brand that prides itself on high-quality craftsmanship and unique designs. The goal was to create a seamless user experience that showcases the beauty and detail of ${title}'s work while providing a functional platform for customers to explore and inquire.`,
+    // 4 photos — carousel shows 2, advances one-by-one
     showcase: [
-      {
-        image: imagePath(slug, IMAGE_FILES.showcaseLeft),
-        alt: `${title} website on laptop in lounge chair`,
-      },
-      {
-        image: imagePath(slug, IMAGE_FILES.showcaseRight),
-        alt: `Close-up of ${title} website interface`,
-      },
+      { image: `${base}/showcase-left.jpg`, alt: `${title} showcase 1` },
+      { image: `${base}/showcase-right.jpg`, alt: `${title} showcase 2` },
+      { image: `${base}/mobile-1.jpg`, alt: `${title} showcase 3` },
+      { image: `${base}/mobile-2.jpg`, alt: `${title} showcase 4` },
     ],
     challenge: {
       title: 'The Challenge:',
@@ -55,44 +45,45 @@ export function createProjectDetail(name, slug, { moreProjectSlugs = [] } = {}) 
       ],
       images: [
         {
-          image: imagePath(slug, IMAGE_FILES.challengeLeft),
-          alt: `${title} project mood visual`,
+          image: `${base}/challenge-left.jpg`,
+          alt: `${title} challenge visual`,
           className: 'md:col-span-1',
         },
         {
-          image: imagePath(slug, IMAGE_FILES.challengeRight),
-          alt: `${title} website in interior setting`,
+          image: `${base}/challenge-right.jpg`,
+          alt: `${title} challenge visual wide`,
           className: 'md:col-span-2',
         },
       ],
     },
+    // 5 photos — carousel shows 4, advances one-by-one
     idea: {
       title: 'The Idea:',
-      headline: `Building a digital system for a brand like ${title} means focusing on more than just the surface.`,
+      headline: `Building a digital system for a brand like ${title} meant focusing on more than just the surface.`,
       mobiles: [
-        imagePath(slug, IMAGE_FILES.mobile1),
-        imagePath(slug, IMAGE_FILES.mobile2),
-        imagePath(slug, IMAGE_FILES.mobile3),
-        imagePath(slug, IMAGE_FILES.mobile4),
+        `${base}/mobile-1.jpg`,
+        `${base}/mobile-2.jpg`,
+        `${base}/mobile-3.jpg`,
+        `${base}/mobile-4.jpg`,
+        `${base}/showcase-left.jpg`,
       ],
     },
     impact: {
       title: 'The Impact:',
-      headline: 'By building the new website, the brand is now ready to grow with the company for years.',
-      body:
-        'The new platform improved discoverability, elevated perceived brand value, and created a scalable foundation for future product lines, campaigns, and international expansion.',
+      headline: 'By building for total quality, the system is ready to grow with the company for years.',
+      body: 'The new platform improved discoverability, elevated perceived brand value, and created a scalable foundation for future product lines, campaigns, and expansion.',
       metrics: [
         { label: 'Visibility', value: '40% Increase' },
         { label: 'Engagement', value: '25% Increase' },
         { label: 'Conversion', value: '15% Increase' },
         { label: 'Traffic', value: '30% Increase' },
       ],
-      image: imagePath(slug, IMAGE_FILES.impactWide),
+      image: `${base}/impact-wide.jpg`,
     },
     testimonial: {
-      quote: `The team at Meta Creative understood our vision from the very beginning. They delivered a website that perfectly captures the essence of ${title} and provides our customers with an exceptional online experience. We are thrilled with the results and look forward to our continued partnership.`,
+      quote: `The team at Meta Creative understood our vision from the very beginning. They delivered a website that perfectly captures the essence of ${title} and provides our customers with an exceptional online experience.`,
       author: title,
-      role: 'CEO',
+      role: 'Client',
     },
     moreProjectSlugs,
   };
@@ -113,3 +104,5 @@ export function withMoreProjects(project, registry) {
     }),
   };
 }
+
+export { imagePath };

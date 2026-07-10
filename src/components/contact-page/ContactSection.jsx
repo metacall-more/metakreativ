@@ -6,31 +6,27 @@ const fieldClass =
 function ContactIcon({ type }) {
   if (type === 'location') {
     return (
-      <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden="true">
-        <path
-          d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11Z"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-        <circle cx="12" cy="10" r="2.5" stroke="currentColor" strokeWidth="1.5" />
-      </svg>
+      <svg width="12" height="16" viewBox="0 0 12 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.03906 14.707C0.761719 8.55469 0 7.91016 0 5.625C0 2.51953 2.49023 0 5.625 0C8.73047 0 11.25 2.51953 11.25 5.625C11.25 7.91016 10.459 8.55469 6.18164 14.707C5.91797 15.1172 5.30273 15.1172 5.03906 14.707Z" fill="#DFE4E8"/>
+</svg>
+
     );
   }
 
   if (type === 'clock') {
     return (
-      <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden="true">
-        <circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth="1.5" />
-        <path d="M12 7.5V12l3 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
+      <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M15 7.5C15 8.86667 14.6667 10.125 14 11.275C13.3333 12.425 12.425 13.3333 11.275 14C10.125 14.6667 8.86667 15 7.5 15C6.13333 15 4.875 14.6667 3.725 14C2.575 13.3333 1.66667 12.425 1 11.275C0.333333 10.125 0 8.86667 0 7.5C0 6.13333 0.333333 4.875 1 3.725C1.66667 2.575 2.575 1.66667 3.725 1C4.875 0.333333 6.13333 0 7.5 0C8.86667 0 10.125 0.333333 11.275 1C12.425 1.66667 13.3333 2.575 14 3.725C14.6667 4.875 15 6.13333 15 7.5ZM7.5 3.3C7.5 3.16667 7.45833 3.05 7.375 2.95C7.29167 2.85 7.18333 2.8 7.05 2.8C6.91667 2.8 6.8 2.85 6.7 2.95C6.6 3.05 6.55 3.16667 6.55 3.3V8.45C6.55 8.61667 6.63333 8.75 6.8 8.85L10.1 10.7C10.2 10.7667 10.3083 10.7833 10.425 10.75C10.5417 10.7167 10.6333 10.6417 10.7 10.525C10.7667 10.4083 10.7833 10.2917 10.75 10.175C10.7167 10.0583 10.65 9.96667 10.55 9.9L7.5 8.15V3.3Z" fill="#DFE4E8"/>
+</svg>
+
     );
   }
 
   return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden="true">
-      <rect x="4" y="6" width="16" height="12" rx="2" stroke="currentColor" strokeWidth="1.5" />
-      <path d="m4 8 8 5 8-5" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
-    </svg>
+    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M7.5 14.0502C8.86667 14.0502 10.125 13.7585 11.275 13.1752C12.425 12.5919 13.3333 11.8002 14 10.8002C14.6667 9.8002 15 8.7002 15 7.5002C15 6.30019 14.6667 5.2002 14 4.2002C13.3333 3.2002 12.425 2.40853 11.275 1.8252C10.125 1.24186 8.86667 0.950195 7.5 0.950195C6.13333 0.950195 4.875 1.24186 3.725 1.8252C2.575 2.40853 1.66667 3.2002 1 4.2002C0.333333 5.2002 0 6.30019 0 7.5002C0 8.3002 0.158333 9.0752 0.475 9.8252C0.791667 10.5752 1.25 11.2335 1.85 11.8002C1.75 12.7335 1.5 13.6669 1.1 14.6002C1.06667 14.6669 1.08333 14.7419 1.15 14.8252C1.21667 14.9085 1.3 14.9502 1.4 14.9502C3 14.6835 4.3 14.3002 5.3 13.8002C6.03333 13.9669 6.76667 14.0502 7.5 14.0502Z" fill="#DFE4E8"/>
+</svg>
+
   );
 }
 
@@ -108,7 +104,7 @@ export default function ContactSection() {
                 className="absolute right-4 bottom-4 flex h-11 w-11 items-center justify-center rounded-full bg-brand-ink-2 text-white transition-opacity hover:opacity-80"
                 aria-label="Send message"
               >
-                <img className="h-4 w-4" src="/assets/icons/arrow-right-white.svg" alt="" />
+                <img className="h-4 w-4" src="/assets/icons/message-icon.svg" alt="" />
               </button>
             </div>
           </div>

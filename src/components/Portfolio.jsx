@@ -2,7 +2,7 @@ import { usePortfolioScroll } from '../hooks/usePortfolioScroll';
 
 const PROJECTS = [
   {
-    img: '/assets/images/home/lissus.webp',
+    img: '/assets/images/portfolio-page/gorilla-img.webp',
     alt: 'Lissus Studio',
     icon: '/assets/icons/arrow-right-4.svg',
     title: 'Lissus Studio',

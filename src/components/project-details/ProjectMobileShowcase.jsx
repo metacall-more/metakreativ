@@ -1,4 +1,22 @@
+import { useEffect, useState } from 'react';
+import ProjectShowcaseCarousel from './ProjectShowcaseCarousel';
+
 export default function ProjectMobileShowcase({ title, headline, mobiles }) {
+  const [visible, setVisible] = useState(4);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 768px)');
+    const update = () => setVisible(mq.matches ? 4 : 2);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
+
+  const images = (mobiles ?? []).map((src, index) => ({
+    image: src,
+    alt: `Project screen ${index + 1}`,
+  }));
+
   return (
     <section className="bg-brand-bg">
       <div className="mx-auto max-w-(--container-max) px-5 py-14 md:px-8 md:py-20 lg:px-0 lg:py-24">
@@ -7,16 +25,12 @@ export default function ProjectMobileShowcase({ title, headline, mobiles }) {
           {headline}
         </h2>
 
-        <div className="mt-10 flex gap-4 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] md:mt-14 md:gap-6 [&::-webkit-scrollbar]:hidden">
-          {mobiles.map((src, index) => (
-            <div
-              key={src}
-              className="h-[min(420px,60vw)] w-[min(220px,42vw)] shrink-0 overflow-hidden rounded-[28px] bg-brand-dark md:h-[480px] md:w-[240px]"
-            >
-              <img className="h-full w-full object-cover" src={src} alt={`Mobile screen ${index + 1}`} />
-            </div>
-          ))}
-        </div>
+        <ProjectShowcaseCarousel
+          images={images}
+          visible={visible}
+          className="mt-10 md:mt-14"
+          imageClassName="h-auto w-full object-contain"
+        />
       </div>
     </section>
   );

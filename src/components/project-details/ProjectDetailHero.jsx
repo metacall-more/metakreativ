@@ -1,6 +1,13 @@
 import PillButton from '../PillButton';
 
-export default function ProjectDetailHero({ label, title, subtitle, siteUrl, heroImage }) {
+export default function ProjectDetailHero({
+  label,
+  title,
+  subtitle,
+  siteUrl,
+  heroImage,
+  ctaLabel = 'Visit Site',
+}) {
   return (
     <section className="mx-auto max-w-(--container-max) px-5 pb-10 pt-4 text-center md:px-8 md:pb-14 lg:px-0 lg:pb-16">
       <span className="font-display text-sm font-medium tracking-[1.4px] text-brand-red uppercase">{label}</span>
@@ -16,11 +23,15 @@ export default function ProjectDetailHero({ label, title, subtitle, siteUrl, her
         href={siteUrl}
         className="mx-auto mt-8 h-12 rounded-[27px] px-8"
       >
-        Visit Site
+        {ctaLabel}
       </PillButton>
 
-      <div className="mx-auto mt-10 max-w-[1200px] overflow-hidden rounded-[20px] md:mt-12">
-        <img className="h-[min(420px,55vw)] w-full object-cover md:h-[min(520px,42vw)]" src={heroImage} alt={title} />
+      <div className="mx-auto mt-10 max-w-[1200px] md:mt-12">
+        <img
+          className="h-auto w-full rounded-[20px] object-contain"
+          src={heroImage}
+          alt={title}
+        />
       </div>
     </section>
   );

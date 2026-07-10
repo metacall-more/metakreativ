@@ -7,13 +7,13 @@ export default function ProjectMoreProjects({ projects }) {
         More Projects
       </h2>
 
-      <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+      <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5 lg:gap-6">
         {projects.map((project) => {
           const content = (
             <>
-              <div className="overflow-hidden rounded-lg">
+              <div className="overflow-hidden rounded-lg bg-brand-gray-300/30">
                 <img
-                  className="h-[min(240px,45vw)] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  className="h-auto w-full object-contain transition-opacity duration-300 group-hover:opacity-90"
                   src={project.image}
                   alt={project.title}
                 />

@@ -4,6 +4,7 @@ import Footer from '../../components/Footer';
 import PageCta from '../../components/PageCta';
 import ProjectDetailHero from '../../components/project-details/ProjectDetailHero';
 import ProjectMetaBar from '../../components/project-details/ProjectMetaBar';
+import ProjectShowcaseCarousel from '../../components/project-details/ProjectShowcaseCarousel';
 import ProjectNarrativeSection from '../../components/project-details/ProjectNarrativeSection';
 import ProjectMobileShowcase from '../../components/project-details/ProjectMobileShowcase';
 import ProjectImpactSection from '../../components/project-details/ProjectImpactSection';
@@ -34,17 +35,7 @@ export default function ProjectDetailPage() {
           {project.intro}
         </p>
 
-        <div className="mt-10 grid grid-cols-1 gap-5 md:mt-14 md:grid-cols-2 md:gap-6">
-          {project.showcase.map((item) => (
-            <div key={item.image} className="overflow-hidden rounded-lg">
-              <img
-                className="h-[min(320px,50vw)] w-full object-cover md:h-[min(420px,32vw)]"
-                src={item.image}
-                alt={item.alt}
-              />
-            </div>
-          ))}
-        </div>
+        <ProjectShowcaseCarousel images={project.showcase} />
       </section>
 
       <ProjectNarrativeSection {...project.challenge} />
