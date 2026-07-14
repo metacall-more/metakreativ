@@ -93,29 +93,17 @@ export default function Nav({ theme = 'dark', activeLink }) {
           Get In Touch
         </PillButton>
 
-        <div className="hidden shrink-0 items-center gap-5 lg:flex">
-          <div
-            className={`flex items-center gap-0.5 text-base uppercase ${isLight ? 'text-brand-gray-600' : 'text-[#9ab2bc]'}`}
-          >
-            Eng
-            <img
-              className={`h-4 w-4 ${isLight ? 'brightness-0 opacity-60' : ''}`}
-              src="/assets/icons/angle-down.svg"
-              alt=""
+        <button
+          className="hidden h-[26px] w-[26px] shrink-0 grid-cols-2 content-center justify-center gap-3.5 lg:grid"
+          aria-label="Open menu"
+        >
+          {Array.from({ length: 4 }).map((_, i) => (
+            <span
+              key={i}
+              className={`h-1.5 w-1.5 rounded-[10px] ${isLight ? 'bg-brand-ink-2' : 'bg-white'}`}
             />
-          </div>
-          <button
-            className="grid h-[26px] w-[26px] grid-cols-2 content-center justify-center gap-3.5"
-            aria-label="Open menu"
-          >
-            {Array.from({ length: 4 }).map((_, i) => (
-              <span
-                key={i}
-                className={`h-1.5 w-1.5 rounded-[10px] ${isLight ? 'bg-brand-ink-2' : 'bg-white'}`}
-              />
-            ))}
-          </button>
-        </div>
+          ))}
+        </button>
 
         <button
           type="button"
@@ -179,11 +167,7 @@ export default function Nav({ theme = 'dark', activeLink }) {
               Get In Touch
             </PillButton>
 
-            <div className="flex items-center justify-between border-t border-white/15 pt-6">
-              <div className="flex items-center gap-0.5 text-base text-[#9ab2bc] uppercase">
-                Eng
-                <img className="h-4 w-4" src="/assets/icons/angle-down.svg" alt="" />
-              </div>
+            <div className="flex items-center justify-end border-t border-white/15 pt-6">
               <div className="flex items-center gap-4 font-body text-sm text-white/70">
                 <a href="#" className="transition-colors hover:text-white">
                   X.
