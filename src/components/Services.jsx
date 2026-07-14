@@ -1,4 +1,4 @@
-import { useServicesTicker } from '../hooks/useServicesTicker';
+import { TICKER_MIDDLE_SET, TICKER_SETS, useServicesTicker } from '../hooks/useServicesTicker';
 
 const SERVICES = [
   {
@@ -48,7 +48,7 @@ export default function Services() {
   const activeService = SERVICES[activeIndex];
 
   return (
-    <section className="mx-auto max-w-[1760px] overflow-hidden rounded-none bg-brand-dark px-5 pt-16 text-white md:rounded-lg md:px-10 md:pt-24 lg:px-[100px] lg:pt-[140px] min-[1921px]:max-w-[calc(var(--container-max)+40px)]">
+    <section className="w-full overflow-hidden bg-brand-dark px-5 pt-16 text-white md:px-10 md:pt-24 lg:px-[100px] lg:pt-[140px]">
       <div className="mb-16 flex flex-col items-start gap-8 md:mb-24 md:gap-12 lg:mb-[140px] lg:flex-row lg:flex-wrap lg:justify-between lg:gap-[280px]">
         <h2 className="m-0 font-display text-[clamp(28px,3.2vw,50px)] font-semibold tracking-[1px] uppercase">
           The Core Capabilities
@@ -69,32 +69,38 @@ export default function Services() {
       <div className="services-ticker mx-[-20px] mb-16 overflow-hidden md:mx-[-40px] md:mb-20 lg:mx-[-100px] lg:mb-[100px]">
         <div
           ref={trackRef}
-          className="services-ticker__track flex w-max items-center gap-6 px-5 font-caps text-[clamp(40px,11vw,200px)] leading-[0.9] whitespace-nowrap uppercase md:gap-10 md:px-10 lg:px-[100px]"
+          className="services-ticker__track flex w-max items-center gap-6 font-caps text-[clamp(40px,11vw,200px)] leading-[0.9] whitespace-nowrap uppercase md:gap-10"
         >
-          {SERVICES.map((service, index) => {
-            const isActive = index === activeIndex;
+          {Array.from({ length: TICKER_SETS }, (_, set) =>
+            SERVICES.map((service, index) => {
+              const isActive = index === activeIndex;
+              const physicalIndex = set * SERVICES.length + index;
+              const isInteractive = set === TICKER_MIDDLE_SET;
 
-            return (
-              <button
-                key={service.id}
-                type="button"
-                ref={setItemRef(index)}
-                onClick={() => select(index)}
-                className="inline-flex shrink-0 cursor-pointer items-center gap-6 border-0 bg-transparent p-0 font-[inherit] text-[length:inherit] leading-[inherit] tracking-[inherit] uppercase md:gap-10"
-                aria-pressed={isActive}
-              >
-                <span
-                  className={`h-0.5 w-10 shrink-0 transition-colors duration-300 ${isActive ? 'bg-brand-bg' : 'bg-[#252a2c]'}`}
-                  aria-hidden="true"
-                />
-                <span
-                  className={`transition-colors duration-300 ${isActive ? 'text-brand-bg' : 'text-[#252a2c] hover:text-[#3a3f42]'}`}
+              return (
+                <button
+                  key={`${set}-${service.id}`}
+                  type="button"
+                  ref={setItemRef(physicalIndex)}
+                  onClick={() => select(index)}
+                  tabIndex={isInteractive ? 0 : -1}
+                  aria-hidden={!isInteractive}
+                  aria-pressed={isInteractive ? isActive : undefined}
+                  className="inline-flex shrink-0 cursor-pointer items-center gap-6 border-0 bg-transparent p-0 font-[inherit] text-[length:inherit] leading-[inherit] tracking-[inherit] uppercase md:gap-10"
                 >
-                  {service.label}
-                </span>
-              </button>
-            );
-          })}
+                  <span
+                    className={`h-0.5 w-10 shrink-0 transition-colors duration-300 ${isActive ? 'bg-brand-bg' : 'bg-[#252a2c]'}`}
+                    aria-hidden="true"
+                  />
+                  <span
+                    className={`transition-colors duration-300 ${isActive ? 'text-brand-bg' : 'text-[#252a2c] hover:text-[#3a3f42]'}`}
+                  >
+                    {service.label}
+                  </span>
+                </button>
+              );
+            }),
+          )}
         </div>
       </div>
 

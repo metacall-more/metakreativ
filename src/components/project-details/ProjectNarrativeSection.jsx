@@ -1,5 +1,6 @@
 export default function ProjectNarrativeSection({ title, headline, body, images, variant = 'light' }) {
   const isDark = variant === 'dark';
+  const isPair = images?.length === 2;
 
   return (
     <section className={isDark ? 'bg-brand-dark text-white' : 'bg-brand-bg text-brand-ink-2'}>
@@ -29,11 +30,28 @@ export default function ProjectNarrativeSection({ title, headline, body, images,
         )}
 
         {images && images.length > 0 && (
-          <div className="mt-10 grid grid-cols-1 items-start gap-5 md:mt-14 md:grid-cols-3 md:gap-6">
+          <div
+            className={
+              isPair
+                ? 'mt-10 grid grid-cols-1 gap-5 md:mt-14 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:gap-6'
+                : 'mt-10 grid grid-cols-1 items-start gap-5 md:mt-14 md:grid-cols-3 md:gap-6'
+            }
+          >
             {images.map((item) => (
-              <div key={item.image} className={item.className ?? ''}>
+              <div
+                key={item.image}
+                className={
+                  isPair
+                    ? 'overflow-hidden rounded-[16px]'
+                    : `overflow-hidden rounded-[16px] ${item.className ?? ''}`
+                }
+              >
                 <img
-                  className="h-auto w-full rounded-lg object-contain"
+                  className={
+                    isPair
+                      ? 'h-[min(360px,70vw)] w-full object-cover md:h-[480px] lg:h-[560px]'
+                      : 'h-auto w-full object-contain'
+                  }
                   src={item.image}
                   alt={item.alt}
                 />

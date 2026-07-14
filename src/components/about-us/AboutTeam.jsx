@@ -9,11 +9,21 @@ const TEAM = [
   { name: 'Larton', role: 'developer', image: '/assets/images/about-us/team-larton.png', offset: 'md' },
 ];
 
+const PHOTO_OFFSET = {
+  none: 'object-[center_38%]',
+  md: 'object-[center_42%]',
+  lg: 'object-[center_45%]',
+};
+
 function TeamCard({ member }) {
   return (
     <article className="relative h-[min(410px,70vw)] overflow-hidden rounded-lg">
       <img className="absolute inset-0 h-full w-full object-cover" src="/assets/images/about-us/about-team-bg.png" alt="" />
-      <img className="absolute inset-0 h-full w-full object-cover object-top" src={member.image} alt={member.name} />
+      <img
+        className={`absolute inset-0 h-full w-full object-cover ${PHOTO_OFFSET[member.offset]}`}
+        src={member.image}
+        alt={member.name}
+      />
       <div className="absolute bottom-0 left-1/2 flex h-[60px] w-[min(310px,90%)] -translate-x-1/2 items-center justify-center gap-3 bg-brand-bg px-5">
         <span className="font-display text-sm font-medium tracking-[1.4px] text-brand-ink uppercase">{member.name}</span>
         <span className="h-1 w-1 rounded bg-brand-ink" aria-hidden="true" />
