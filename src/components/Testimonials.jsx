@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { useReveal } from '../hooks/useReveal';
 import { useTestimonialDeck } from '../hooks/useTestimonialDeck';
 
@@ -28,10 +29,35 @@ const TESTIMONIALS = [
   },
 ];
 
+const SWIPE_THRESHOLD = 50;
+
 export default function Testimonials() {
   const headingReveal = useReveal();
   const deckReveal = useReveal();
   const { setCardRef, next, prev } = useTestimonialDeck(TESTIMONIALS.length);
+  const touchRef = useRef({ x: 0, y: 0, active: false });
+
+  const onTouchStart = (event) => {
+    const touch = event.changedTouches[0];
+    if (!touch) return;
+    touchRef.current = { x: touch.clientX, y: touch.clientY, active: true };
+  };
+
+  const onTouchEnd = (event) => {
+    const start = touchRef.current;
+    if (!start.active) return;
+    touchRef.current.active = false;
+
+    const touch = event.changedTouches[0];
+    if (!touch) return;
+
+    const dx = touch.clientX - start.x;
+    const dy = touch.clientY - start.y;
+    if (Math.abs(dx) < SWIPE_THRESHOLD || Math.abs(dx) < Math.abs(dy)) return;
+
+    if (dx < 0) next();
+    else prev();
+  };
 
   return (
     <section className="mx-auto my-16 max-w-(--container-max) overflow-hidden rounded-[20px] border border-brand-gray-300 p-6 md:my-20 md:p-10 lg:my-[110px] lg:p-[60px]">
@@ -50,7 +76,12 @@ export default function Testimonials() {
         <span className="text-brand-gray-400">ents say about us</span>
       </h2>
 
-      <div ref={deckReveal} className="reveal reveal-delay relative min-h-[480px] md:min-h-[560px] lg:min-h-[620px]">
+      <div
+        ref={deckReveal}
+        className="reveal reveal-delay relative min-h-[480px] touch-pan-y md:min-h-[560px] lg:min-h-[620px]"
+        onTouchStart={onTouchStart}
+        onTouchEnd={onTouchEnd}
+      >
         {TESTIMONIALS.map((testimonial, i) => (
           <article
             key={testimonial.name}
@@ -82,14 +113,14 @@ export default function Testimonials() {
 
         <button
           onClick={prev}
-          className="absolute top-1/2 left-0 z-[3] h-9 w-9 -translate-y-1/2 sm:left-2"
+          className="absolute top-1/2 left-0 z-[3] hidden h-9 w-9 -translate-y-1/2 md:block md:left-2"
           aria-label="Previous testimonial"
         >
           <img className="h-full w-full rotate-180 scale-y-[-1]" src="/assets/icons/arrow-right-3.svg" alt="" />
         </button>
         <button
           onClick={next}
-          className="absolute top-1/2 right-0 z-[3] h-9 w-9 -translate-y-1/2 sm:right-2"
+          className="absolute top-1/2 right-0 z-[3] hidden h-9 w-9 -translate-y-1/2 md:block md:right-2"
           aria-label="Next testimonial"
         >
           <img className="h-full w-full" src="/assets/icons/arrow-right-2.svg" alt="" />

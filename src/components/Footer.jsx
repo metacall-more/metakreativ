@@ -20,17 +20,17 @@ export default function Footer() {
           </p>
         </div>
 
-        <div className="flex flex-col flex-wrap justify-between gap-8 border-b border-brand-dark-border py-8 text-center sm:flex-row sm:gap-10 md:py-[45px]">
-          <div className="flex-[1_1_260px]">
-            <h3 className="m-0 mb-2.5 font-display text-xl font-medium capitalize md:text-2xl">Ali Vitia 4, Pristina, Kosovo</h3>
+        <div className="flex flex-col gap-5 border-b border-brand-dark-border py-6 text-center sm:flex-row sm:flex-wrap sm:justify-between sm:gap-10 sm:py-8 md:py-[45px]">
+          <div className="sm:flex-[1_1_260px]">
+            <h3 className="m-0 mb-1.5 font-display text-lg font-medium capitalize sm:mb-2.5 md:text-2xl">Ali Vitia 4, Pristina, Kosovo</h3>
             <p className="m-0 text-sm text-brand-light-text md:text-base">Latitude: 42.6377803, Longitude: 21.14958073</p>
           </div>
-          <div className="flex-[1_1_260px]">
-            <h3 className="m-0 mb-2.5 font-display text-xl font-medium capitalize md:text-2xl">+(383) 45 733 152</h3>
+          <div className="sm:flex-[1_1_260px]">
+            <h3 className="m-0 mb-1.5 font-display text-lg font-medium capitalize sm:mb-2.5 md:text-2xl">+(383) 45 733 152</h3>
             <p className="m-0 text-sm text-brand-light-text md:text-base">Call Us Support &amp; Consulting 24/7</p>
           </div>
-          <div className="flex-[1_1_260px]">
-            <h3 className="m-0 mb-2.5 font-display text-xl font-medium md:text-2xl">info@metakreativ.de</h3>
+          <div className="sm:flex-[1_1_260px]">
+            <h3 className="m-0 mb-1.5 font-display text-lg font-medium sm:mb-2.5 md:text-2xl">info@metakreativ.de</h3>
             <p className="m-0 text-sm text-brand-light-text md:text-base">Reply Within 12 Hours</p>
           </div>
         </div>
