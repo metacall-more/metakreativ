@@ -5,24 +5,23 @@ const img = (n) => `${IMAGE_BASE}/gorilla-${n}.webp`;
 /** Gorilla case study — images gorilla-1 … 13. Copy aligned to brand; refine from Figma when available. */
 export const GORILLA_OVERRIDES = {
   meta: {
-    label: 'Case Study',
-    title: 'Gorilla',
+    label: 'e-commerce online store',
+    title: 'Gorilla mall',
     subtitle:
-      'From the technology jungle straight to your home — a bold e-commerce experience for tech, gaming, and lifestyle.',
-    siteUrl: '#',
-    ctaLabel: 'View Website',
+      'A dominant multi-category marketplace designed for massive scale, Gorilla Mall partnered with Meta Kreativ to build a fearless brand identity and a high-velocity shopping experience.',
+    siteUrl: 'https://gorilla-mall.com/',
     heroImage: img(1),
   },
   stats: [
-    { label: 'Brand', value: 'Gorilla' },
-    { label: 'Client', value: 'Gorilla' },
-    { label: 'Year', value: '2024' },
-    { label: 'Role', value: 'Digital Design & Development' },
-    { label: 'Category', value: 'E-commerce' },
-    { label: 'Location', value: 'Albania' },
+    { label: 'Services', value: 'UI UX Design, Development' },
+    { label: 'Client', value: 'Gorilla Mall' },
+    { label: 'Timeline', value: '6 - 8 Weeks' },
+    { label: 'Stack', value: 'Figma, Adobe' },
+    { label: 'Category', value: 'Portfolio, E-commerce' },
+    { label: 'Development', value: 'Meta Kreativ Studio' },
   ],
   intro:
-    'Gorilla is a modern technology and lifestyle retailer built to bring the energy of the tech jungle into everyday life. The goal was to create a seamless e-commerce experience that showcases products with impact — from gaming gear to accessories — while staying fast, clear, and conversion-focused.',
+    'Building a marketplace that houses every category requires a brand identity that can carry that weight. Gorilla Mall partnered with us to move beyond a standard online shop and create a dominant e-commerce ecosystem. Our mission was to merge a bold, aggressive visual style with a streamlined user journey. By focusing on a high-velocity checkout and a clean, modern interface, we built a platform that handles massive inventory while maintaining a fast, premium shopping experience.',
   showcase: [
     { image: img(2), alt: 'Gorilla website mockup 1' },
     { image: img(3), alt: 'Gorilla website mockup 2' },
@@ -31,10 +30,11 @@ export const GORILLA_OVERRIDES = {
   ],
   challenge: {
     title: 'The Challenge:',
-    headline: 'Build a digital store that feels as bold as the brand.',
+    headline: 'BUILDING A HIGH-SPEED MARKETPLACE FOR MASSIVE INVENTORY.',
+    bodyTitle: 'Built for Strength',
     body: [
-      'Gorilla needed more than a product catalog. They needed an online presence that could communicate energy, trust, and tech credibility — while making it easy for customers to explore categories and buy with confidence.',
-      'The challenge was translating a jungle-inspired brand personality into a clean, scalable e-commerce system without losing the boldness that makes Gorilla memorable.',
+      'Gorilla Mall came to us with an ambitious goal: to build an online space that could house every product category without losing its identity or its speed. They were starting from zero and needed a platform that could handle a huge inventory without losing its speed or its personality.',
+      "They didn't just need a place to list items; they needed a high-performance engine that could handle massive amounts of data and a custom design that makes browsing thousands of items feel easy. Our mission was to build a brand and a platform from scratch that brought a bold, strong look together with a fast, modern shopping experience.",
     ],
     images: [
       {
@@ -52,39 +52,40 @@ export const GORILLA_OVERRIDES = {
   idea: {
     title: 'The Idea:',
     headline:
-      'Create a distinct e-commerce identity and a modern shopping experience built for discovery and conversion.',
+      'CREATING A BOLD BRAND AND A STORE BUILT FOR POWER.',
     mobiles: [img(8), img(9), img(10), img(11), img(12)],
   },
   impact: {
     title: 'The Impact:',
-    headline: 'By building for clarity and scale, the platform is ready to grow with Gorilla for years.',
+    headline: 'BUILDING A SHOPPING EXPERIENCE MADE FOR GROWTH.',
+    bodyTitle: 'A Lasting Result',
     body:
-      'The new digital system elevated product storytelling, improved navigation across categories, and created a flexible foundation for campaigns, merchandising, and future expansion.',
+      'The goal was to make sure Gorilla Mall never slows down. We built a system from scratch that is fast, strong, and ready to handle huge numbers of shoppers and any type of product. It’s more than just an online shop; it’s a powerful tool designed to grow as big and as fast as the business does.',
     metrics: null,
     columns: [
       {
-        label: 'Strategy',
-        items: ['Brand Positioning', 'Customer Journey', 'Category Architecture', 'Project Discovery'],
+        label: 'THE MISSION',
+        items: ['Marketplace Strategy', 'Brand Dominance', 'Category Architecture', 'Conversion Mapping'],
       },
       {
-        label: 'Design',
-        items: ['Visual Identity', 'UI/UX Design', 'Product Presentation', 'Design System'],
+        label: 'THE BACKEND',
+        items: ['High-Volume CMS', 'Fast Checkout Logic', 'Inventory Scaling', 'System Integrity'],
       },
       {
-        label: 'Digital',
-        items: ['E-commerce Website', 'Category Pages', 'Campaign Assets', 'Content Structure'],
+        label: 'THE FRONTEND',
+        items: ['Dynamic Interface', 'Search Optimization', 'Seamless Navigation', 'Mobile-First Design'],
       },
       {
-        label: 'Launch',
-        items: ['Store Launch', 'Merchandising Setup', 'Performance Optimization', 'Ongoing Support'],
+        label: 'THE TESTING',
+        items: ['Load Stress Testing', 'Transaction Security', 'Performance Benchmarks', 'UX Validation'],
       },
     ],
     image: img(13),
   },
   testimonial: {
     quote:
-      'Meta Creative captured the energy of Gorilla and turned it into a digital experience that feels bold, clear, and ready to sell. The new platform reflects who we are — and where we are going.',
-    author: 'Gorilla',
-    role: 'Client',
+      "Meta Kreativ built us a powerhouse. We needed a store that could handle thousands of products from the start without slowing down, and they delivered exactly that. They didn't just design a shop; they built a fast, bold system that actually matches the scale of Gorilla Mall. It’s reliable, easy to use, and exactly what we needed to lead the market.",
+    author: 'Gorilla team',
+    role: 'founders',
   },
 };

@@ -5,23 +5,23 @@ const img = (n, ext = 'webp') => `${IMAGE_BASE}/loni-${n}.${ext}`;
 /** Loni Dekor case study — images ordered loni-1 … loni-13. */
 export const LONI_DEKOR_OVERRIDES = {
   meta: {
-    label: 'Case Study',
+    label: 'furniture factory',
     title: 'Loni Dekor',
     subtitle:
-      'A simple, yet sophisticated system that lets you focus on what really matters — creating an environment that supports you.',
-    siteUrl: '#',
+      'A leading furniture manufacturer known for its high-quality craftsmanship and modern design, partnered with Meta Kreativ to elevate their digital presence.',
+    siteUrl: 'https://lonidekor.com/',
     heroImage: img(1),
   },
   stats: [
-    { label: 'Brand', value: 'Loni Dekor' },
+    { label: 'Services', value: 'UI UX Design, Development' },
     { label: 'Client', value: 'Loni Dekor' },
-    { label: 'Year', value: '2024' },
-    { label: 'Role', value: 'Digital Design & Development' },
-    { label: 'Category', value: 'E-commerce' },
-    { label: 'Location', value: 'Albania' },
+    { label: 'Timeline', value: '6 - 8 Weeks' },
+    { label: 'Stack', value: 'Figma, Adobe' },
+    { label: 'Category', value: 'Portfolio, E-commerce' },
+    { label: 'Development', value: 'Meta Kreativ Studio' },
   ],
   intro:
-    'Building a digital presence for a brand that prides itself on high-quality craftsmanship and unique designs. The goal was to create a seamless user experience that showcases the beauty and detail of Loni Dekor’s work while providing a functional platform for customers to explore and inquire.',
+    'Following their 2020 Rebrand, Loni Dekor partnered with us to engineer their most ambitious digital campaign to date: "The Standard of Craft." Our goal was to re-architect Loni Dekor’s connection with their high-end clientele and broaden technical awareness for a brand that represents the pinnacle of bespoke interior production.',
   // 4 photos — 2 visible, slide one-by-one
   showcase: [
     { image: img(2), alt: 'Loni Dekor website mockup 1' },
@@ -31,10 +31,11 @@ export const LONI_DEKOR_OVERRIDES = {
   ],
   challenge: {
     title: 'The Challenge:',
-    headline: 'Build a modern digital system that reflects the quality of premium craftsmanship.',
+    headline: 'BUILD  A MODERN  DIGITAL  SYSTEM  THAT  REFLECTS THE  QUALITY  OF  PREMIUM  CRAFTSMANSHIP.',
+    bodyTitle: 'Rallying around Quality',
     body: [
       'Loni Dekor needed more than a brochure website. They needed a platform that could communicate quality, trust, and premium service through screens alone.',
-      'The challenge was translating a physical brand experience into a digital journey — without losing the warmth, detail, and trust that define the brand.',
+      'They didn’t just need a "pretty" website; they needed a high-speed engine that could grow the business while keeping that clean, high-end feel.',
     ],
     images: [
       {
@@ -59,20 +60,33 @@ export const LONI_DEKOR_OVERRIDES = {
   impact: {
     title: 'The Impact:',
     headline: 'By building for total quality, the system is ready to grow with the company for years.',
-    body:
-      'The new platform improved discoverability, elevated perceived brand value, and created a scalable foundation for future product lines, campaigns, and expansion.',
-    metrics: [
-      { label: 'Visibility', value: '40% Increase' },
-      { label: 'Engagement', value: '25% Increase' },
-      { label: 'Conversion', value: '15% Increase' },
-      { label: 'Traffic', value: '30% Increase' },
+    bodyTitle: 'A Lasting Result',
+    body: "The goal was to make sure Loni Dekor never has to worry about their digital setup again. We built a foundation that is tough, fast, and easy to scale as they take on bigger projects. It's not just a website; it's a long-term asset that works as hard as they do.",
+    metrics: null,
+    columns: [
+      {
+        label: 'The Mission',
+        items: ['Project Scope', 'Digital Strategy', 'User Experience', 'Brand Positioning'],
+      },
+      {
+        label: 'The Backend',
+        items: ['Workflow Logic', 'Custom Code', 'Database Design', 'System Stability'],
+      },
+      {
+        label: 'The Frontend',
+        items: ['User Interface', 'Mobile Responsiveness', 'Interactive Layouts', 'Visual Aesthetics'],
+      },
+      {
+        label: 'The Testing',
+        items: ['Quality Assurance', 'Performance Metrics', 'User Feedback', 'Bug Tracking'],
+      },
     ],
     image: img(13),
   },
   testimonial: {
     quote:
-      'The team at Meta Creative understood our vision from the very beginning. They delivered a website that perfectly captures the essence of Loni Dekor and provides our customers with an exceptional online experience.',
-    author: 'Loni Dekor',
-    role: 'Client',
+      "Teaming up with Meta was the best decision we made for our growing business. They didn't just give us a beautiful website; they rebuilt the entire engine behind our work. For the first time, our digital systems actually match the quality of our craftsmanship. Everything is faster, simpler, and built to last.",
+    author: 'Faton Hyseni',
+    role: 'Owner, Loni Dekor',
   },
 };

@@ -1,15 +1,19 @@
 export default function ProjectMetaBar({ stats }) {
   return (
-    <section className="bg-brand-dark text-white">
-      <div className="mx-auto grid max-w-(--container-max) grid-cols-2 gap-6 px-5 py-10 md:grid-cols-3 md:gap-8 md:px-8 md:py-12 lg:grid-cols-6 lg:px-0 lg:py-14">
-        {stats.map((item) => (
-          <div key={item.label} className="text-center lg:text-left">
-            <p className="m-0 font-display text-xs font-medium tracking-[1.4px] text-brand-gray-400 uppercase">
-              {item.label}
-            </p>
-            <p className="m-0 mt-2 font-display text-base font-medium text-white md:text-lg">{item.value}</p>
-          </div>
-        ))}
+    <section className="mx-auto max-w-(--container-max) px-5 pb-6 md:px-8 md:pb-8 lg:px-0 lg:pb-8">
+      <div className="overflow-hidden rounded-[12px] bg-brand-ink">
+        <div className="grid grid-cols-2 divide-x divide-y divide-white/10 md:grid-cols-3 lg:grid-cols-6 lg:divide-y-0">
+          {stats.map((item, i) => (
+            <div key={`${item.label}-${i}`} className="px-5 py-8 text-center sm:px-6 lg:px-5 lg:py-10">
+              <p className="m-0 font-display text-xs font-semibold tracking-[1.2px] text-white uppercase md:text-sm">
+                {item.label}
+              </p>
+              <p className="m-0 mt-2 font-body text-sm leading-snug text-white/55 md:text-[15px]">
+                {item.value}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -2,72 +2,108 @@ import { usePortfolioScroll } from '../hooks/usePortfolioScroll';
 
 const PROJECTS = [
   {
-    img: '/assets/images/portfolio-page/gorilla-img.webp',
+    slug: 'lissus',
+    img: '/assets/images/home/lissus.webp',
     alt: 'Lissus Studio',
     icon: '/assets/icons/arrow-right-4.svg',
     title: 'Lissus Studio',
     tags: ['digital marketing', 'Brand identity'],
   },
   {
+    slug: 'gorilla',
     img: '/assets/images/home/gorilla.webp',
     alt: 'Telling Stories That Matter',
     icon: '/assets/icons/link-icon-2.svg',
-    title: 'Telling Stories That Matter',
+    title: 'gorilla mall',
     tags: ['Branding', 'graphic design'],
   },
   {
+    slug: 'loni-dekor',
     img: '/assets/images/home/loni-dekor.webp',
     alt: 'Redefining Creativity',
     icon: '/assets/icons/link-icon-3.svg',
-    title: 'Redefining Creativity',
+    title: 'loni dekor',
     tags: ['Branding', 'website design'],
   },
   {
+    slug: 'wynthorpe',
     img: '/assets/images/home/whynthorpe.webp',
     alt: 'Marketing with Emotion',
     icon: '/assets/icons/link-icon-4.svg',
-    title: 'Marketing with Emotion',
+    title: 'whynthorpe',
     tags: ['creative', 'digital marketing'],
   },
   {
+    slug: 'hiti-kamina',
     img: '/assets/images/home/hiti.webp',
     alt: 'Marketing with Emotion',
     icon: '/assets/icons/link-icon-5.svg',
-    title: 'Marketing with Emotion',
+    title: 'hiti kamina',
     tags: ['Branding', 'graphic design'],
   },
   {
+    slug: 'anniken',
     img: '/assets/images/home/anniken-brinchmann.webp',
     alt: 'Marketing with Emotion',
     icon: '/assets/icons/link-icon-5.svg',
-    title: 'Marketing with Emotion',
+    title: 'anniken brinchman',
     tags: ['Branding', 'graphic design'],
   },
   {
+    slug: 'ed-remodeling',
     img: '/assets/images/home/ed-remodeling.webp',
     alt: 'Marketing with Emotion',
     icon: '/assets/icons/link-icon-5.svg',
-    title: 'Marketing with Emotion',
+    title: 'ed remodeling',
     tags: ['Branding', 'graphic design'],
   },
   {
+    slug: 'green-residence',
     img: '/assets/images/home/green-residence.webp',
     alt: 'Marketing with Emotion',
     icon: '/assets/icons/link-icon-5.svg',
-    title: 'Marketing with Emotion',
+    title: 'green residence',
     tags: ['Branding', 'graphic design'],
   },
   {
+    slug: 'golden-rent',
     img: '/assets/images/home/golden-rent-a-car.webp',
     alt: 'Marketing with Emotion',
     icon: '/assets/icons/link-icon-5.svg',
-    title: 'Marketing with Emotion',
+    title: 'golden rent a car',
     tags: ['Branding', 'graphic design'],
   },
 ];
 
+function CardChrome({ project }) {
+  return (
+    <>
+      <span
+        className="portfolio-card__link absolute left-[50px] bottom-[50px] z-2 flex h-20 w-20 items-center justify-center rounded-full bg-brand-bg"
+        aria-hidden="true"
+      >
+        <img className="h-4 w-4" src={project.icon} alt="" />
+      </span>
+      <div className="portfolio-card__footer absolute right-[50px] bottom-5 left-[50px] z-2 flex flex-wrap items-end justify-between gap-4 sm:gap-6">
+        <h3 className="m-0 font-display text-lg font-semibold text-brand-bg uppercase sm:text-2xl">
+          {project.title}
+        </h3>
+        <div className="flex flex-wrap items-center gap-3 text-xs tracking-[0.7px] text-brand-bg uppercase sm:gap-4 sm:text-sm">
+          {project.tags.map((tag, ti) => (
+            <span key={tag} className="contents">
+              {ti > 0 && <span className="h-[5px] w-[5px] rounded-full bg-current" />}
+              <span className="underline">{tag}</span>
+            </span>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+}
+
 export default function Portfolio() {
-  const { pinRef, stackRef, setCardRef, rollerRef } = usePortfolioScroll(PROJECTS.length);
+  const { pinRef, stackRef, setCardRef, rollerRef, activeIndex } = usePortfolioScroll(PROJECTS.length);
+  const activeProject = PROJECTS[activeIndex] ?? PROJECTS[0];
 
   return (
     <section className="mx-auto max-w-(--container-max) border-t border-brand-gray-300 px-5 pt-6 pb-10 md:px-8 md:pt-[30px] md:pb-[50px] lg:px-0 lg:pb-[60px]">
@@ -94,39 +130,42 @@ export default function Portfolio() {
               </div>
             </div>
 
-            <div
-              ref={stackRef}
-              className="portfolio-stack relative mx-auto h-[calc(min(700px,62vh)+150px)] w-[min(1300px,84vw)] max-lg:my-0 max-lg:flex max-lg:h-auto max-lg:w-full max-lg:flex-col max-lg:gap-5"
-            >
-              {PROJECTS.map((project, i) => (
-                <article
-                  key={i}
-                  ref={setCardRef(i)}
-                  className="portfolio-card absolute top-[150px] right-0 bottom-0 left-0 overflow-hidden rounded-[20px] bg-brand-gray-600 will-change-transform max-lg:top-auto max-lg:right-auto max-lg:bottom-auto max-lg:left-auto"
-                >
-                  <img className="absolute inset-0 h-full w-full object-cover" src={project.img} alt={project.alt} />
-                  <div className="absolute inset-0 bg-linear-to-b from-black/0 from-50% to-black/40" />
-                  <button
-                    className="portfolio-card__link absolute left-[50px] bottom-[50px] z-2 flex h-20 w-20 items-center justify-center rounded-full bg-brand-bg max-lg:opacity-100"
-                    aria-label="Open project"
+            <div className="relative mx-auto h-[calc(min(700px,62vh)+150px)] w-[min(1300px,84vw)] max-lg:my-0 max-lg:h-auto max-lg:w-full">
+              <div
+                ref={stackRef}
+                className="portfolio-stack absolute inset-0 max-lg:relative max-lg:flex max-lg:h-auto max-lg:flex-col max-lg:gap-5"
+              >
+                {PROJECTS.map((project, i) => (
+                  <article
+                    key={i}
+                    ref={setCardRef(i)}
+                    className="portfolio-card absolute top-[150px] right-0 bottom-0 left-0 overflow-hidden rounded-[20px] bg-brand-gray-600 will-change-transform max-lg:top-auto max-lg:right-auto max-lg:bottom-auto max-lg:left-auto"
                   >
-                    <img className="h-4 w-4" src={project.icon} alt="" />
-                  </button>
-                  <div className="portfolio-card__footer absolute right-[50px] bottom-5 left-[50px] z-2 flex flex-wrap items-end justify-between gap-4 max-lg:opacity-100 sm:gap-6">
-                    <h3 className="m-0 font-display text-lg font-semibold text-brand-bg uppercase sm:text-2xl">
-                      {project.title}
-                    </h3>
-                    <div className="flex flex-wrap items-center gap-3 text-xs tracking-[0.7px] text-brand-bg uppercase sm:gap-4 sm:text-sm">
-                      {project.tags.map((tag, ti) => (
-                        <span key={tag} className="contents">
-                          {ti > 0 && <span className="h-[5px] w-[5px] rounded-full bg-current" />}
-                          <span className="underline">{tag}</span>
-                        </span>
-                      ))}
+                    <a
+                      href={`/portfolio/${project.slug}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="absolute inset-0 z-3 cursor-pointer lg:hidden"
+                      aria-label={`Open ${project.title}`}
+                    />
+                    <img className="absolute inset-0 h-full w-full object-cover" src={project.img} alt={project.alt} />
+                    <div className="absolute inset-0 bg-linear-to-b from-black/0 from-50% to-black/40" />
+                    <div className="lg:hidden">
+                      <CardChrome project={project} />
                     </div>
-                  </div>
-                </article>
-              ))}
+                  </article>
+                ))}
+              </div>
+
+              <a
+                href={`/portfolio/${activeProject.slug}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="portfolio-stack__overlay absolute top-[150px] right-0 bottom-0 left-0 z-10 overflow-hidden rounded-[20px] max-lg:hidden"
+                aria-label={`Open ${activeProject.title}`}
+              >
+                <CardChrome project={activeProject} />
+              </a>
             </div>
 
             <span className="shrink-0 font-display text-lg font-medium tracking-[0.9px] max-lg:hidden">

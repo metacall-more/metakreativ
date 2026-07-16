@@ -22,8 +22,6 @@ const LOGOS = [
       { src: '/assets/icons/clients/lonidekor-main.svg', style: { left: '1.1%', top: '7%', width: '75%', height: '86%' } },
       { src: '/assets/icons/clients/lonidekor-vector1.svg', style: { left: '82%', top: '8%', width: '7.9%', height: '85%' } },
       { src: '/assets/icons/clients/lonidekor-vector2.svg', style: { left: '91%', top: '8%', width: '7.9%', height: '85%' } },
-      { src: '/assets/icons/clients/lonidekor-icon.svg', style: { left: '81.8%', top: '8%', width: '8.9%', height: '85%' } },
-      { src: '/assets/icons/clients/lonidekor-dot.svg', style: { left: '96.7%', top: '8%', width: '2.2%', height: '8.7%' } },
     ],
   },
   {

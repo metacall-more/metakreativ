@@ -13,22 +13,22 @@ export function createProjectDetail(name, slug, { moreProjectSlugs = [] } = {}) 
   return {
     slug,
     meta: {
-      label: 'Case Study',
+      label: 'AGENCY BRANDING & IDENTITY',
       title,
       subtitle:
-        'A simple, yet sophisticated system that lets you focus on what really matters — creating an environment that supports you.',
-      siteUrl: '#',
+        'A creative studio that speaks through design. We partnered with Lissus Studio to transform their vision into a complete, high-end brand identity—building the foundation from a single idea into a full digital reality.',
+      siteUrl: 'https://www.instagram.com/lissusstudio/',
       heroImage: `${base}/hero.jpg`,
     },
     stats: [
-      { label: 'Brand', value: title },
+      { label: 'Services', value: 'Full Identity, Brand Book' },
       { label: 'Client', value: title },
-      { label: 'Year', value: '2024' },
-      { label: 'Role', value: 'Digital Design & Development' },
-      { label: 'Category', value: 'E-commerce' },
-      { label: 'Location', value: 'Albania' },
+      { label: 'Timeline', value: '6 - 8 Weeks' },
+      { label: 'Stack', value: 'Figma, Adobe' },
+      { label: 'Category', value: 'Creative Agency' },
+      { label: 'Development', value: 'Meta Kreativ Studio' },
     ],
-    intro: `Building a digital presence for a brand that prides itself on high-quality craftsmanship and unique designs. The goal was to create a seamless user experience that showcases the beauty and detail of ${title}'s work while providing a functional platform for customers to explore and inquire.`,
+    intro: `Creating a brand for a creative agency requires an identity that is both a bold statement and a clean canvas. Lissus Studio partnered with us to turn their heritage into a premium visual identity. Taking inspiration from the name of an ancient Illyrian king, we merged historical roots with a sophisticated, modern design. The result is a platform that establishes their creative authority while letting their work take center stage.`,
     // 4 photos — carousel shows 2, advances one-by-one
     showcase: [
       { image: `${base}/showcase-left.jpg`, alt: `${title} showcase 1` },
@@ -38,10 +38,11 @@ export function createProjectDetail(name, slug, { moreProjectSlugs = [] } = {}) 
     ],
     challenge: {
       title: 'The Challenge:',
-      headline: 'Build a modern digital system that reflects the quality of premium craftsmanship.',
+      headline: 'DEFINING THE IDENTITY OF A CREATIVE POWERHOUSE.',
+      bodyTitle: 'Rallying around Vision',
       body: [
-        `${title} needed more than a brochure website. They needed a platform that could communicate quality, trust, and premium service through screens alone.`,
-        'The challenge was translating a physical brand experience into a digital journey — without losing the warmth, detail, and trust that define the brand.',
+        `Lissus Studio needed a brand that was both a statement and a canvas. The challenge was to take a name rooted in ancient Illyrian history and build a complete visual world around it from the ground up.`,
+        `We focused on merging a sophisticated, minimalist look with a strong digital presence. The result ensures their first impression is as powerful as the name they carry and the creative work they produce.`,
       ],
       images: [
         {
@@ -59,7 +60,7 @@ export function createProjectDetail(name, slug, { moreProjectSlugs = [] } = {}) 
     // 5 photos — carousel shows 4, advances one-by-one
     idea: {
       title: 'The Idea:',
-      headline: `Building a digital system for a brand like ${title} meant focusing on more than just the surface.`,
+      headline: `UNITING ANCIENT HERITAGE WITH MODERN CREATIVE VISION.`,
       mobiles: [
         `${base}/mobile-1.jpg`,
         `${base}/mobile-2.jpg`,
@@ -70,20 +71,33 @@ export function createProjectDetail(name, slug, { moreProjectSlugs = [] } = {}) 
     },
     impact: {
       title: 'The Impact:',
-      headline: 'By building for total quality, the system is ready to grow with the company for years.',
-      body: 'The new platform improved discoverability, elevated perceived brand value, and created a scalable foundation for future product lines, campaigns, and expansion.',
-      metrics: [
-        { label: 'Visibility', value: '40% Increase' },
-        { label: 'Engagement', value: '25% Increase' },
-        { label: 'Conversion', value: '15% Increase' },
-        { label: 'Traffic', value: '30% Increase' },
+      headline: 'CRAFTING A LEGACY FOR THE NEXT GENERATION OF DESIGN.',
+      bodyTitle: 'A timeless Identity',
+      body: `The goal was to give Lissus Studio a foundation that feels both ancient and modern. We built an identity that is clean and ready to evolve as the agency grows. The logo gives them a strong presence in the creative world, making the brand as powerful and lasting as the history behind its name.`,
+      columns: [
+        {
+          label: 'The Mission',
+          items: ['Creative Strategy', 'Identity Genesis', 'Brand Positioning', 'Visual Narrative'],
+        },
+        {
+          label: 'The Backend',
+          items: ['Clean Code Logic', 'High-Speed CMS', 'Asset Management', 'System Stability'],
+        },
+        {
+          label: 'The Frontend',
+          items: ['Conceptual UI', 'Smooth Transitions', 'Portfolio Display', 'Minimalist Design'],
+        },
+        {
+          label: 'The Testing',
+          items: ['Visual Precision', 'Motion Fluidity', 'Load Performance', 'Cross-Device Flow'],
+        },
       ],
       image: `${base}/impact-wide.jpg`,
     },
     testimonial: {
-      quote: `The team at Meta Creative understood our vision from the very beginning. They delivered a website that perfectly captures the essence of ${title} and provides our customers with an exceptional online experience.`,
-      author: title,
-      role: 'Client',
+      quote: `Working with Meta Kreativ was a perfect partnership. They took our core idea and turned it into a strong brand identity that perfectly fits our studio. They didn’t just build a website; they built a foundation for our future. Our digital presence now looks as professional and intentional as the work we do for our own clients. It’s sharp, bold, and built to last.`,
+      author: "Labeat toska",
+      role: `founder and CEO`,
     },
     moreProjectSlugs,
   };

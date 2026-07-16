@@ -1,23 +1,37 @@
 import { useReveal } from '../hooks/useReveal';
 import { useTestimonialDeck } from '../hooks/useTestimonialDeck';
-import PillButton from './PillButton';
 
-// Only one real testimonial exists in the source design; duplicated across
-// the deck slots purely to demo the click-cycling mechanics (user's call).
-const TESTIMONIAL = {
-  avatar: '/assets/images/testimonial-avatar.png',
-  name: 'Anne Weying',
-  role: 'Cloud Sales Executive, AMD',
-  heading: 'They built the impossible.',
-  quote:
-    '“We came to Meta with a backend mess that others couldn\'t fix. Their team didn\'t just “redesign” it they reengineered the entire logic. The result is a seamless system that handles our scale without a single glitch. True architectural mastery.”',
-};
-const CARD_COUNT = 3;
+const TESTIMONIALS = [
+  {
+    avatar: '/assets/images/testimonial-avatar.png',
+    name: 'Anne Weying',
+    role: 'Cloud Sales Executive, AMD',
+    heading: 'They built the impossible.',
+    quote:
+      '“We came to Meta with a backend mess that others couldn\'t fix. Their team didn\'t just “redesign” it they reengineered the entire logic. The result is a seamless system that handles our scale without a single glitch. True architectural mastery.”',
+  },
+  {
+    avatar: '/assets/images/testimonial-avatar-2.jpg',
+    name: 'Marcus Hale',
+    role: 'Founder, Wynthorpe Technology',
+    heading: 'A brand that finally feels premium.',
+    quote:
+      '“Meta Kreativ translated our vision into a bold, cohesive identity and a website that actually converts. From strategy to launch, every detail felt intentional — and the results showed up in both brand recognition and leads.”',
+  },
+  {
+    avatar: '/assets/images/testimonial-avatar-3.jpg',
+    name: 'Elena Rossi',
+    role: 'Marketing Director, Green Residence',
+    heading: 'Clear process. Stunning delivery.',
+    quote:
+      '“Working with Meta Kreativ was seamless end to end. They understood our audience, elevated our visual language, and delivered a digital experience that feels as refined as the product itself. We recommend them without hesitation.”',
+  },
+];
 
 export default function Testimonials() {
   const headingReveal = useReveal();
   const deckReveal = useReveal();
-  const { setCardRef, next, prev } = useTestimonialDeck(CARD_COUNT);
+  const { setCardRef, next, prev } = useTestimonialDeck(TESTIMONIALS.length);
 
   return (
     <section className="mx-auto my-16 max-w-(--container-max) overflow-hidden rounded-[20px] border border-brand-gray-300 p-6 md:my-20 md:p-10 lg:my-[110px] lg:p-[60px]">
@@ -37,31 +51,31 @@ export default function Testimonials() {
       </h2>
 
       <div ref={deckReveal} className="reveal reveal-delay relative min-h-[480px] md:min-h-[560px] lg:min-h-[620px]">
-        {Array.from({ length: CARD_COUNT }).map((_, i) => (
+        {TESTIMONIALS.map((testimonial, i) => (
           <article
-            key={i}
+            key={testimonial.name}
             ref={setCardRef(i)}
             className="testimonial-card absolute top-1/2 left-1/2 flex min-h-[auto] w-full max-w-[430px] flex-col justify-between gap-8 rounded-[20px] bg-white p-6 sm:min-h-[560px] sm:gap-10 sm:p-10"
           >
             <div className="flex items-center gap-[23px]">
               <img
                 className="h-14 w-14 rounded-lg object-cover sm:h-[66px] sm:w-[66px]"
-                src={TESTIMONIAL.avatar}
-                alt={TESTIMONIAL.name}
+                src={testimonial.avatar}
+                alt={testimonial.name}
               />
               <div className="flex flex-col gap-1">
                 <h3 className="m-0 font-display text-sm font-medium tracking-[1.4px] text-brand-ink-2 uppercase">
-                  {TESTIMONIAL.name}
+                  {testimonial.name}
                 </h3>
-                <p className="m-0 text-sm text-brand-gray-600">{TESTIMONIAL.role}</p>
+                <p className="m-0 text-sm text-brand-gray-600">{testimonial.role}</p>
               </div>
             </div>
 
             <p className="m-0 mt-2 w-full text-[clamp(60px,14vw,95px)] leading-none text-brand-ink sm:mt-5">&ldquo;</p>
 
             <div className="flex flex-col gap-5 text-brand-ink-2 sm:gap-7">
-              <h4 className="m-0 font-display text-[17px] font-medium uppercase">{TESTIMONIAL.heading}</h4>
-              <p className="m-0 text-sm leading-[1.9] sm:text-base">{TESTIMONIAL.quote}</p>
+              <h4 className="m-0 font-display text-[17px] font-medium uppercase">{testimonial.heading}</h4>
+              <p className="m-0 text-sm leading-[1.9] sm:text-base">{testimonial.quote}</p>
             </div>
           </article>
         ))}
@@ -81,15 +95,6 @@ export default function Testimonials() {
           <img className="h-full w-full" src="/assets/icons/arrow-right-2.svg" alt="" />
         </button>
       </div>
-
-      <PillButton
-        variant="outline"
-        icon="/assets/icons/arrow-right-1.svg"
-        href="#"
-        className="mx-auto mt-10 md:mt-[60px]"
-      >
-        view all testimonials
-      </PillButton>
     </section>
   );
 }

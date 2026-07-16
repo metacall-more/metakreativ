@@ -9,20 +9,19 @@ export const HITI_KAMINA_OVERRIDES = {
     title: 'Hiti Kamina',
     subtitle:
       'A modern digital platform that brings the warmth and quality of traditional craftsmanship to the digital world.',
-    siteUrl: '#',
-    ctaLabel: 'Visit Live',
+    siteUrl: 'https://hiticompany.net/',
     heroImage: img(1),
   },
   stats: [
-    { label: 'Client', value: 'Hiti' },
-    { label: 'Role', value: 'Branding, UI/UX' },
-    { label: 'Team', value: 'Meta Creative' },
-    { label: 'Year', value: '2024' },
-    { label: 'Industry', value: 'Furniture' },
-    { label: 'Category', value: 'Interior Design' },
+    { label: 'Services', value: 'UI UX Design, Development' },
+    { label: 'Client', value: 'Hiti Kamina' },
+    { label: 'Timeline', value: '8 – 10 Weeks' },
+    { label: 'Stack', value: 'Figma, Adobe, CMS' },
+    { label: 'Category', value: 'Portfolio, E-commerce' },
+    { label: 'Development', value: 'Meta Kreativ Studio' },
   ],
   intro:
-    'Hiti Kamina brings the warmth of traditional craftsmanship into modern living. The project focused on building a digital experience that feels as refined and inviting as the products themselves — combining heritage, material quality, and a clear path for customers to explore and connect.',
+    'Hiti Kamina is more than just a retailer; they are experts in creating the heart of the home. From sophisticated built-in fireplaces and pellet stoves to luxury spas and saunas, their inventory is vast and diverse. Our mission was to design a platform that manages this wide range of products while maintaining a high-end, inviting aesthetic. We focused on a user journey that feels as warm and comfortable as the products they sell, ensuring that whether a customer is looking for a budget-friendly stove or a premium sauna, the experience remains premium and professional.',
   showcase: [
     { image: img(2), alt: 'Hiti Kamina website mockup 1' },
     { image: img(3), alt: 'Hiti Kamina website mockup 2' },
@@ -31,10 +30,11 @@ export const HITI_KAMINA_OVERRIDES = {
   ],
   challenge: {
     title: 'The Challenge:',
-    headline: 'Integrating traditional craftsmanship with a modern digital user experience.',
+    headline: 'INTEGRATING TRADITIONAL CRAFTSMANSHIP INTO A MODERN DIGITAL COMMERCE SYSTEM.',
+    bodyTitle: 'Rallying around Comfort',
     body: [
-      'Hiti needed a digital presence that could translate tactile craftsmanship — wood, fire, and material detail — into an interface that feels warm, premium, and easy to navigate.',
-      'The challenge was to honor traditional making while delivering a modern showroom experience that builds trust and helps customers discover the right products.',
+      'Hiti Kamina provides a vast range of technical products, from complex built-in fireplaces to luxury outdoor spas. The challenge was to take this massive, diverse inventory and present it in a way that feels premium and easy to browse.',
+      "They didn't just need an online catalog; they needed an intuitive shopping experience that guides a customer from a high-level search to a specific heating solution. The mission was to simplify the complex technical specs of stoves and saunas while maintaining a warm, high-end brand feel that resonates with homeowners.",
     ],
     images: [
       {
@@ -51,39 +51,40 @@ export const HITI_KAMINA_OVERRIDES = {
   },
   idea: {
     title: 'The Idea:',
-    headline: 'Bringing the warmth of craftsmanship to the digital world.',
+    headline: 'BRINGING THE WARMTH OF CRAFTSMANSHIP TO THE DIGITAL WORLD.',
     mobiles: [img(8), img(9), img(10), img(11), img(12)],
   },
   impact: {
     title: 'The Impact:',
-    headline: 'Building the ultimate digital showroom for fireplace enthusiasts.',
+    headline: 'BUILDING THE ULTIMATE DIGITAL SHOWROOM FOR HOME COMFORT.',
+    bodyTitle: 'A Professional Standard',
     body:
-      'The new platform elevated how Hiti presents its craft — creating a digital showroom that strengthens brand presence, improves product discovery, and supports long-term growth.',
+     "The goal was to make sure Hiti Kamina could showcase everything from small accessories to full-scale saunas in a clean, simple way. We built a professional foundation from the ground up that is designed to grow with their inventory. It is more than just a website; it’s a high-quality digital space that brings the warmth of their physical showroom to every screen, making it easy for homeowners to find exactly what they need.",
     metrics: null,
     columns: [
       {
-        label: 'Strategy',
-        items: ['Brand Positioning', 'Customer Journey', 'Showroom Concept', 'Project Discovery'],
+        label: 'THE MISSION',
+        items: ['Comfort Strategy', 'Brand Warmth', 'Inventory Logic', 'Trust Mapping'],
       },
       {
-        label: 'Design',
-        items: ['Visual Identity', 'UI Design', 'UX Design', 'Prototyping'],
+        label: 'THE BACKEND',
+        items: ['Structured CMS', 'Smart Search Filters', 'High-Performance Sync', 'Reliable Architecture'],
       },
       {
-        label: 'Digital',
-        items: ['Website Design', 'Product Presentation', 'Motion', 'Content Structure'],
+        label: 'THE FRONTEND',
+        items: ['Inviting Interface', 'Mobile Excellence', 'Product Storytelling', 'Intuitive Navigation'],
       },
       {
-        label: 'Launch',
-        items: ['Frontend', 'Branding Assets', 'Showroom Launch', 'Ongoing Support'],
+        label: 'THE TESTING',
+        items: ['Search Precision', 'Checkout Security', 'Speed Benchmarks', 'System Stability'],
       },
     ],
     image: img(13),
   },
   testimonial: {
     quote:
-      'Meta Creative captured the essence of Hiti — the warmth, the craft, and the quiet strength of the brand — and turned it into a digital experience that feels true to who we are.',
+     "Working with Meta Kreativ was the best decision for our brand’s growth.  We needed a platform that could elegantly showcase everything from built-in fireplaces to luxury spas, and they delivered a perfectly structured system, and they delivered a perfectly structured platform. Our online presence finally matches the quality and warmth of our products. It’s clean, fast, and built for growth.",
     author: 'Hiti Kamina',
-    role: 'Client',
+    role: 'Founder team',
   },
 };

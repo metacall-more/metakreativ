@@ -5,24 +5,23 @@ const img = (n) => `${IMAGE_BASE}/ed-${n}.webp`;
 /** E&D Remodeling case study — copy from Figma screenshot, images ed-1 … 13. */
 export const ED_REMODELING_OVERRIDES = {
   meta: {
-    label: 'Brand Identity / Architecture',
+    label: 'HOME TRANSFORMATION',
     title: 'E&D Remodeling',
     subtitle:
-      'E&D Remodeling has built its legacy on crafting spaces that resonate with quality and timelessness. Our rebranding effort was to bridge their artisanal roots with a modern digital persona.',
-    siteUrl: '#',
-    ctaLabel: 'Visit Website',
+     `A family-owned leader in home transformation, E&D Remodeling partnered with Meta Kreativ to build a digital presence that reflects their dedication to quality craftsmanship and the trust they’ve earned across Thornton since 2019.`,
+    siteUrl: 'https://ed-remodeling.com/',
     heroImage: img(1),
   },
   stats: [
-    { label: 'Industry', value: 'Construction' },
-    { label: 'Service', value: 'Brand Identity' },
-    { label: 'Year', value: '2023' },
-    { label: 'Location', value: 'Philadelphia' },
+    { label: 'Services', value: 'Branding, UI UX, Web' },
     { label: 'Client', value: 'E&D Remodeling' },
-    { label: 'Category', value: 'Architecture' },
+    { label: 'Timeline', value: '6 - 8 Weeks' },
+    { label: 'Stack', value: 'Figma, Adobe, CMS' },
+    { label: 'Category', value: 'Construction, Remodeling' },
+    { label: 'Development', value: 'Meta Kreativ Studio' },
   ],
   intro:
-    'Crafting a brand for E&D Remodeling was more than just a visual update; it was about honoring decades of construction mastery. We chose a palette of deep blues and slate grays to reflect both the stability of their structures and the precision of their craft. From a redefined logo that mirrors architectural strength to a cohesive digital presence, every touchpoint was meticulously designed to echo the trust E&D Remodeling has built with its clients.',
+    `Building a brand for a high-end contractor requires a digital presence rooted in trust. E&D Remodeling partnered with us to transform their family-owned expertise into a professional digital home. By merging a clean aesthetic with an intuitive showcase of their kitchen and bathroom mastery, we built a platform that highlights their craftsmanship and establishes long term confidence for Colorado homeowners.`,
   showcase: [
     { image: img(2), alt: 'E&D Remodeling logo on fabric' },
     { image: img(3), alt: 'E&D Remodeling brand assets' },
@@ -31,9 +30,11 @@ export const ED_REMODELING_OVERRIDES = {
   ],
   challenge: {
     title: 'The Challenge:',
-    headline: 'Translating decades of craftsmanship into a digital legacy.',
+    headline: 'TRANSLATING DECADES OF CRAFTSMANSHIP INTO A DIGITAL LEGACY.',
+    bodyTitle: 'Rallying around Trust',
     body: [
-      "The challenge was to capture the essence of E&D Remodeling's hands-on expertise and translate it into a digital experience that feels as solid and reliable as their construction work. We needed to ensure that their heritage of quality wasn't lost in modernization, but rather highlighted through clean, contemporary design.",
+    `E&D Remodeling came to us with a vision to modernize their family-owned brand without losing the personal touch that defined them since 2019. Their existing presence lacked the visual depth required to showcase high-end kitchen and bathroom transformations.`,
+    `They didn't just need a website; they needed a professional platform that communicates dedication and expertise. The mission was to bridge the gap between their hands-on remodeling skill and a clean, high-performance digital experience that builds immediate confidence with Colorado homeowners.`,
     ],
     images: [
       {
@@ -50,39 +51,39 @@ export const ED_REMODELING_OVERRIDES = {
   },
   idea: {
     title: 'The Idea:',
-    headline: 'Crafting a digital masterpiece for substantial craftsmanship.',
+    headline: 'CRAFTING A DIGITAL SHOWROOM FOR SUPERIOR CRAFTSMANSHIP.',
     mobiles: [img(8), img(9), img(10), img(11), img(12)],
   },
   impact: {
     title: 'The Impact:',
-    headline: 'Establishing a digital benchmark for quality remodeling.',
-    body:
-      'The results were immediate and impactful. The new brand identity provided E&D Remodeling with a cohesive professional look that resonated with both long-term clients and a new generation of homeowners. The modernized digital presence led to increased engagement and a stronger market position, solidifying their reputation as leaders in the construction industry.',
+    headline: 'ESTABLISHING A DIGITAL BENCHMARK FOR QUALITY remodeling.',
+    bodyTitle: 'A Lasting Result',
+    body: `The goal was to ensure E&D Remodeling stands out in a competitive market. We built a high-performance digital presence designed to showcase their kitchen and bathroom transformations with clinical precision. It is a solid foundation that communicates trust, simplifies the customer journey, and scales alongside their reputation for excellence in Colorado.`,
     metrics: null,
     columns: [
       {
-        label: 'Logo Design',
-        items: ['Typography', 'Iconography', 'Visual Balance'],
+        label: 'THE MISSION',
+        items: ['Brand Evolution', 'Trust Positioning', 'Service Hierarchy','Market Authority'],
       },
       {
-        label: 'Color Palette',
-        items: ['Deep Blue', 'Slate Gray', 'Architectural White'],
+        label: 'THE BACKEND',
+        items: ['Clean CMS Logic', 'Lead Optimization', 'Image Performance','System Stability'],
       },
       {
-        label: 'Brand Elements',
-        items: ['Business Cards', 'Letterheads', 'Brochures'],
+        label: 'THE FRONTEND',
+        items: ['Gallery-First UI', 'Clean Aesthetics', 'Simple Navigation', 'Mobile Fluidity'],
       },
       {
-        label: 'Digital Presence',
-        items: ['Responsive Website', 'Social Media', 'UX/UI Design'],
+        label: 'THE TESTING',
+        items: ['Visual Precision', 'Device Loading', 'UX Flow','Cross-Browser Stability'],
       },
     ],
     image: img(13),
   },
   testimonial: {
-    quote:
-      "Quality is not an act, it is a habit. E&D Remodeling's new identity is a testament to their unwavering commitment to excellence and their vision for the future of construction.",
-    author: 'E&D Remodeling',
-    role: 'Client',
+    quote: 
+    `Working with Meta Kreativ was a game-changer for our family business. We needed a platform that could showcase the dedication and craftsmanship we put into every kitchen and bathroom remodel. They didn't just build a website; they created a professional digital home that truly reflects our passion for quality. For the first time, our digital presence matches the high standards of our physical work. It is clean, trustworthy, and built to last.`,
+    author: 'Nick cakolli',
+    role: 'founder & CEO',
   },
 };

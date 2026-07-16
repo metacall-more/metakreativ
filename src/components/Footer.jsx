@@ -26,11 +26,11 @@ export default function Footer() {
             <p className="m-0 text-sm text-brand-light-text md:text-base">Latitude: 42.6377803, Longitude: 21.14958073</p>
           </div>
           <div className="flex-[1_1_260px]">
-            <h3 className="m-0 mb-2.5 font-display text-xl font-medium capitalize md:text-2xl">(+383) 49-000 000</h3>
+            <h3 className="m-0 mb-2.5 font-display text-xl font-medium capitalize md:text-2xl">+(383) 45 733 152</h3>
             <p className="m-0 text-sm text-brand-light-text md:text-base">Call Us Support &amp; Consulting 24/7</p>
           </div>
           <div className="flex-[1_1_260px]">
-            <h3 className="m-0 mb-2.5 font-display text-xl font-medium capitalize md:text-2xl">info@metakreativ.de</h3>
+            <h3 className="m-0 mb-2.5 font-display text-xl font-medium md:text-2xl">info@metakreativ.de</h3>
             <p className="m-0 text-sm text-brand-light-text md:text-base">Reply Within 12 Hours</p>
           </div>
         </div>
@@ -55,7 +55,7 @@ export default function Footer() {
               <br />
               Our Mission
             </h3>
-            <PillButton variant="solid" icon="/assets/icons/arrow-right-1.svg" href="#">
+            <PillButton variant="solid" icon="/assets/icons/arrow-right-1.svg" href="/contact-us">
               Let&rsquo;s work together
             </PillButton>
           </div>

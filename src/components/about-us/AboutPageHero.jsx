@@ -11,11 +11,11 @@ export default function AboutPageHero() {
 
         <div className="relative z-[1] hidden flex-wrap items-start gap-x-10 gap-y-2 px-8 pt-10 font-body text-base text-white md:flex lg:px-[70px] lg:pt-10">
           <div className="space-y-1.5">
-            <p className="m-0">Based In Los Angeles, California</p>
-            <p className="m-0">Dreamslab112@gmail.com +</p>
+            <p className="m-0">Based In Pristina, Kosovo</p>
+            <p className="m-0">nfo@metakreativ.de</p>
           </div>
           <div className="mx-4 hidden h-[60px] w-px bg-white/20 lg:block" aria-hidden="true" />
-          <p className="m-0">Call Us — (234) 109-6666</p>
+          <p className="m-0">Call Us — (383) 45 733 152</p>
         </div>
 
         <div className="relative z-[1] flex min-h-[min(500px,70vw)] flex-col justify-end gap-8 px-5 pb-10 pt-24 md:px-10 md:pb-12 lg:flex-row lg:items-end lg:justify-between lg:px-20 lg:pb-16 lg:pt-32">

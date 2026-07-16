@@ -5,24 +5,23 @@ const img = (n) => `${IMAGE_BASE}/green-${n}.webp`;
 /** Green Residence case study — copy from Figma screenshot, images green-1 … 13. */
 export const GREEN_RESIDENCE_OVERRIDES = {
   meta: {
-    label: 'Real Estate & Landscape',
+    label: 'ARCHITECTURAL residential',
     title: 'Green Residence',
     subtitle:
-      'Green Residence is a cutting-edge real estate company committed to designing sustainable and high-quality living spaces.',
-    siteUrl: 'https://www.greenresidence.com',
-    ctaLabel: 'Visit Site',
+      'A leader in modern construction, Green Residence partnered with Meta Kreativ to showcase two of the most prestigious residential projects in Ferizaj: "Bifurkacioni" and "Green Residence 2.',
+    siteUrl: 'https://www.greenresidence-ks.com/',
     heroImage: img(1),
   },
   stats: [
-    { label: 'Project', value: 'Green Residence' },
-    { label: 'Year', value: '2023' },
-    { label: 'Category', value: 'Real Estate' },
-    { label: 'Client', value: 'Private Client' },
-    { label: 'Website', value: 'greenresidence.com' },
-    { label: 'Industry', value: 'Real Estate' },
+    { label: 'Services', value: 'Branding, UI UX, Web' },
+    { label: 'Client', value: 'Green Residence' },
+    { label: 'Timeline', value: '10 – 12 Weeks' },
+    { label: 'Stack', value: 'Figma, Adobe, CMS' },
+    { label: 'Category', value: 'Portfolio, Construction' },
+    { label: 'Development', value: 'Meta Kreativ Studio' },
   ],
   intro:
-    'Green Residence is a cutting-edge real estate company committed to designing sustainable and high-quality living spaces. Their mission is to provide environmentally-friendly homes that integrate modern architecture with the tranquility of nature. They wanted a brand identity that reflects their dedication to luxury, modernism, and a connection to the environment.',
+    `Green Residence came to us with projects that redefine the skyline of Ferizaj. The challenge was to create a digital presence that reflects the scale of their "Bifurkacioni" and "Green Residence 2" complexes. They didn't just need a website, they needed a platform that communicates technical superiority, from ventilated facades to high-end architectural details while assuring future residents of safety, comfort, and modern luxury.`,
   showcase: [
     { image: img(2), alt: 'Green Residence business cards' },
     { image: img(3), alt: 'Green Residence logo and brand assets' },
@@ -31,9 +30,11 @@ export const GREEN_RESIDENCE_OVERRIDES = {
   ],
   challenge: {
     title: 'The Challenge:',
-    headline: 'Crafting a digital identity as solid as the construction itself.',
+    headline: 'CRAFTING A DIGITAL IDENTITY AS SOLID AS THE CONSTRUCTION ITSELF.',
+    bodyTitle: 'Rallying around Power',
     body: [
-      'Green Residence needed a brand and web presence that would differentiate them in a competitive market. The goal was to communicate luxury and sustainability simultaneously, ensuring the digital experience was as premium as the physical properties.',
+      `For Green Residence, we focused on a clean, monumental design language. By highlighting the latest technology and premium materials used in their projects, we created a digital presence that stands for security and comfort.`,
+      `The experience was made to be simple and smooth, allowing people to explore high-ceiling apartments and large terraces through a premium, easy-to-use interface.`
     ],
     images: [
       {
@@ -50,39 +51,40 @@ export const GREEN_RESIDENCE_OVERRIDES = {
   },
   idea: {
     title: 'The Idea:',
-    headline: 'Creating a digital landmark that matches the quality of modern living.',
+    headline: 'CREATING A DIGITAL LANDMARK THAT MATCHES THE QUALITY OF MODERN LIVING.',
     mobiles: [img(8), img(9), img(10), img(11), img(12)],
   },
   impact: {
     title: 'The Impact:',
-    headline: 'Establishing a digital landmark for premium residential living.',
+    headline: 'ESTABLISHING A DIGITAL LANDMARK FOR PREMIUM RESIDENTIAL LIVING.',
+    bodyTitle: 'A Standard of Excellence',
     body:
-      "By blending natural elements with modern design, we created a digital identity that resonates with Green Residence's core values. The result is a cohesive, high-end brand experience that appeals to eco-conscious homeowners and investors.",
+      `The goal was to reflect the safety and grandeur of their projects. We built a high performance showroom that showcases every architectural detail, from ventilated facades to expansive terraces. It is a solid foundation designed to build trust and grow alongside their presence in the skyline.`,
     metrics: null,
     columns: [
       {
-        label: 'Strategy',
-        items: ['Brand Positioning', 'Market Research', 'Audience Definition', 'Project Discovery'],
+        label: 'THE MISSION',
+        items: ['Development Strategy', 'Project Grandeur', 'Investor Trust', 'Urban Integration'],
       },
       {
-        label: 'Design',
-        items: ['Logo Design', 'Visual Identity', 'Brand Guidelines', 'UI/UX Design'],
+        label: 'THE BACKEND',
+        items: ['High-Resolution CMS', 'Secure Lead Capture', 'Scalable Architecture', 'Performance Speed'],
       },
       {
-        label: 'Digital',
-        items: ['Website Design', 'Property Presentation', 'Digital Assets', 'Content Structure'],
+        label: 'THE FRONTEND',
+        items: ['Architectural UI', 'Immersive Galleries', 'Mobile Optimization', 'Interactive Floorplans'],
       },
       {
-        label: 'Launch',
-        items: ['Brand Activation', 'Signage System', 'Launch Support', 'Ongoing Growth'],
+        label: 'THE TESTING',
+        items: ['Browser Stability', 'Security Protocols', 'Speed Benchmarks', 'UX Precision'],
       },
     ],
     image: img(13),
   },
   testimonial: {
     quote:
-      "META's team was able to capture the essence of our project and transform it into a stunning digital brand. Their attention to detail and commitment to excellence made the entire process seamless.",
-    author: 'Artan Beqiri',
-    role: 'CEO',
+     `Meta Kreativ understood that our buildings are landmarks, and our website needed to be one too. They delivered a platform that perfectly communicates the quality, safety, and modern technology behind our complexes. For the first time, our digital identity matches the prestigious standards of our work. It is clean, reliable, and exactly what we needed to showcase the future of living in Ferizaj.`,
+    author: 'Liridon Qerkini',
+    role: 'co founder',
   },
 };

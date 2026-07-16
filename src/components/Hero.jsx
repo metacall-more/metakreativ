@@ -21,7 +21,7 @@ export default function Hero() {
       <PillButton
         variant="solid"
         icon="/assets/icons/arrow-right-1.svg"
-        href="#"
+        href="/portfolio"
         className="hero-cta absolute z-[3]"
       >
         Experience the work

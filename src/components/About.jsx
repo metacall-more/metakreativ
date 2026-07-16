@@ -29,7 +29,7 @@ export default function About() {
           <PillButton
             variant="outline"
             icon="/assets/icons/arrow-right-1.svg"
-            href="#"
+            href="/about-us"
             className="h-12 w-full max-w-[270px] rounded-[26px] px-[26px] py-3"
           >
             more about us

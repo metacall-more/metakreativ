@@ -68,23 +68,6 @@ export const SERVICES = [
     ],
   },
   {
-    id: 'video-production',
-    title: 'Video Production',
-    image: '/assets/images/services/video-production.webp',
-    description:
-      'Motion tells stories that static design cannot. From concept to final cut, we produce video content that captures attention, communicates clearly, and leaves a lasting impression.',
-    features: [
-      'Concept Creation',
-      'Storytelling & Scripts',
-      'Filming & Production',
-      'Post-Production',
-      'Motion Graphics & Animation',
-      'Color Grading',
-      'Video Editing & Optimization',
-      'Sound Design & Audio',
-    ],
-  },
-  {
     id: 'digital-marketing',
     title: 'Digital Marketing',
     image: '/assets/images/services/digital-marketing.webp',

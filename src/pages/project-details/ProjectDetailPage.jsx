@@ -30,7 +30,7 @@ export default function ProjectDetailPage() {
 
       <ProjectMetaBar stats={project.stats} />
 
-      <section className="mx-auto max-w-(--container-max) px-5 py-14 md:px-8 md:py-20 lg:px-0 lg:py-24">
+      <section className="mx-auto max-w-(--container-max) px-5 pt-2 pb-14 md:px-8 md:pt-4 md:pb-20 lg:px-0 lg:pt-4 lg:pb-24">
         <p className="mx-auto max-w-[900px] text-center font-body text-base leading-[1.85] text-[#4f5153] md:text-lg">
           {project.intro}
         </p>

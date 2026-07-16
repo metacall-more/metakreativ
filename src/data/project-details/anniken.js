@@ -5,24 +5,23 @@ const img = (n, ext = 'webp') => `${IMAGE_BASE}/anniken-${n}.${ext}`;
 /** Anniken Brinchmann case study — copy from Figma screenshot, images anniken-1 … 13. */
 export const ANNIKEN_OVERRIDES = {
   meta: {
-    label: 'Case Study',
+    label: 'muscle therapist',
     title: 'Anniken Brinchmann',
     subtitle:
-      'An integrated brand identity for a therapeutic and wellness center in Cologne, Germany.',
-    siteUrl: '#',
-    ctaLabel: 'Visit Website',
+      'A veteran in muscle therapy with over 30 years of clinical expertise, Anniken Brinchmann partnered with Meta Kreativ to create a digital presence that reflects her deep knowledge of human physiology and interdisciplinary care.',
+    siteUrl: 'https://annikenbrinchmannmassasje.no/',
     heroImage: img(1),
   },
   stats: [
+    { label: 'Services', value: 'Branding, UI UX, Web' },
     { label: 'Client', value: 'Anniken Brinchmann' },
-    { label: 'Services', value: 'Brand Identity' },
-    { label: 'Year', value: '2023' },
-    { label: 'Category', value: 'Wellness' },
-    { label: 'Location', value: 'Cologne, Germany' },
-    { label: 'Industry', value: 'Therapy & Wellness' },
+    { label: 'Timeline', value: '6 – 8 Weeks' },
+    { label: 'Stack', value: 'Figma, Adobe, CMS' },
+    { label: 'Category', value: 'Health & Wellness' },
+    { label: 'Development', value: 'Meta Kreativ Studio' },
   ],
   intro:
-    'Anniken Brinchmann is a therapeutic and wellness center built around calm, care, and presence. The project focused on creating an integrated brand identity that feels warm and refined — connecting print, space, and digital touchpoints into one coherent experience.',
+   `Anniken Brinchmann came to us with a rare level of expertise: over 30 years of specialized muscle therapy in Oslo’s most respected interdisciplinary clinics. Our mission was to move beyond a standard practitioner site and create a professional digital home that reflects this deep clinical knowledge. By focusing on a clean, medical-grade aesthetic and an intuitive service hierarchy, we built a platform that handles everything from sports injury recovery to chronic pain management while maintaining a calm, reassuring patient experience.`,
   showcase: [
     { image: img(2), alt: 'Anniken Brinchmann treatment visual' },
     { image: img(3), alt: 'Anniken Brinchmann branded towels' },
@@ -31,10 +30,11 @@ export const ANNIKEN_OVERRIDES = {
   ],
   challenge: {
     title: 'The Challenge:',
-    headline: 'Digitalizing the world of therapeutic wellbeing.',
+    headline: 'DIGITALIZING THREE DECADES OF THERAPEUTIC EXPERTISE.',
+    bodyTitle: 'Bridging Care and Technology',
     body: [
-      'The brand needed a visual system that could carry the softness of therapeutic care into every touchpoint — from printed materials to digital experiences — without losing warmth or clarity.',
-      'The challenge was to build an identity that feels personal and calming, while remaining flexible enough for packaging, space, and online presence.',
+     `Anniken came to us with a career built on trust and results. The challenge was to create a complete brand identity and a website that does more than just showcase her work.`,
+     `We needed a smart booking system that allows clients to choose specific massage types and treatments with ease. By moving away from generic design, we built a professional platform that manages her schedule while giving patients the confidence that they are in expert hands.`,
     ],
     images: [
       {
@@ -51,39 +51,40 @@ export const ANNIKEN_OVERRIDES = {
   },
   idea: {
     title: 'The Idea:',
-    headline: 'Tangible and physical merging with digital experiences.',
+    headline: 'TRANSLATING PHYSICAL MASTERY INTO A DIGITAL EXPERIENCE.',
     mobiles: [img(8), img(9), img(10, 'png'), img(11), img(12)],
   },
   impact: {
     title: 'The Impact:',
-    headline: 'Scalable and responsive brand architecture.',
+    headline: 'BUILDING A TRUST-DRIVEN PLATFORM FOR EXPERT CARE.',
+    bodyTitle: 'A Lasting Result',
     body:
-      'The new identity created a cohesive brand system across physical and digital channels — giving Anniken Brinchmann a clear, calm presence that can grow with the practice.',
+      `The goal was to reflect the precision of her work. We built a professional digital home that highlights her experience in treating chronic pain and sports injuries. It is a reliable system designed to build trust and simplify the patient journey.`,
     metrics: null,
     columns: [
       {
-        label: 'Strategy',
-        items: ['Brand Positioning', 'Audience Insight', 'Touchpoint Mapping', 'Project Discovery'],
+        label: 'THE MISSION',
+        items: ['Clinical Strategy', 'Expert Positioning', 'Patient Trust', 'Service Hierarchy'],
       },
       {
-        label: 'Design',
-        items: ['Logo Design', 'Visual Identity', 'Brand Guidelines', 'Print System'],
+        label: 'THE BACKEND',
+        items: ['Secure CMS', 'Booking Integration', 'Performance Speed', 'Mobile Stability'],
       },
       {
-        label: 'Digital',
-        items: ['Website Design', 'UI/UX', 'Mobile Experience', 'Content Structure'],
+        label: 'THE FRONTEND',
+        items: ['Clinical UI', 'Calm Aesthetics', 'Simple Navigation', 'Responsive Design'],
       },
       {
-        label: 'Launch',
-        items: ['Packaging', 'Collateral', 'Brand Activation', 'Ongoing Support'],
+        label: 'THE TESTING',
+        items: ['Security Protocols', 'Browser Loading', 'UX Flow', 'Device Compatibility'],
       },
     ],
     image: img(13),
   },
   testimonial: {
     quote:
-      'The brand system captures the calm and care at the heart of the practice — connecting every detail, from print to digital, into one clear and lasting identity.',
+      `Working with Meta Kreativ was a game-changer. They understood that my practice is built on 30 years of trust and precision. They didn’t just build a website; they created a digital home that truly reflects my expertise. Now, my online presence feels as high-quality as the care I provide. It’s clean, professional, and exactly what my patients need.`,
     author: 'Anniken Brinchmann',
-    role: 'Client',
+    role: 'CEO',
   },
 };

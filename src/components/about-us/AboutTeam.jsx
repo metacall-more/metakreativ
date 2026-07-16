@@ -1,31 +1,31 @@
 import PillButton from '../PillButton';
 
 const TEAM = [
-  { name: 'Besart', role: 'developer', image: '/assets/images/about-us/team-besart.png', offset: 'none' },
-  { name: 'sinan', role: 'Head of design', image: '/assets/images/about-us/team-sinan.png', offset: 'none' },
-  { name: 'Megzon', role: 'CEO', image: '/assets/images/about-us/team-megzon.png', offset: 'lg' },
-  { name: 'Mirjeta', role: 'Project manager', image: '/assets/images/about-us/team-mirjeta.png', offset: 'lg' },
-  { name: 'sinan', role: 'Head of design', image: '/assets/images/about-us/team-altin.png', offset: 'md' },
-  { name: 'Larton', role: 'developer', image: '/assets/images/about-us/team-larton.png', offset: 'md' },
+  { name: 'Besart', role: 'developer', image: '/assets/images/about-us/team-besart.png' },
+  { name: 'sinan', role: 'Head of design', image: '/assets/images/about-us/team-sinan.png' },
+  { name: 'Megzon', role: 'CEO', image: '/assets/images/about-us/team-megzon.png' },
+  { name: 'Adea', role: 'Project manager', image: '/assets/images/about-us/team-adea.png' },
+  { name: 'sinan', role: 'Head of design', image: '/assets/images/about-us/team-altin.png' },
+  { name: 'Larton', role: 'developer', image: '/assets/images/about-us/team-larton.png' },
 ];
-
-const PHOTO_OFFSET = {
-  none: 'object-[center_38%]',
-  md: 'object-[center_42%]',
-  lg: 'object-[center_45%]',
-};
 
 function TeamCard({ member }) {
   return (
-    <article className="relative h-[min(410px,70vw)] overflow-hidden rounded-lg">
-      <img className="absolute inset-0 h-full w-full object-cover" src="/assets/images/about-us/about-team-bg.png" alt="" />
+    <article className="relative aspect-[352/412] w-full overflow-hidden rounded-[14px]">
       <img
-        className={`absolute inset-0 h-full w-full object-cover ${PHOTO_OFFSET[member.offset]}`}
+        className="absolute inset-0 h-full w-full object-cover object-top"
+        src="/assets/images/about-us/about-team-bg.png"
+        alt=""
+      />
+      <img
+        className="absolute inset-0 h-full w-full object-cover object-top"
         src={member.image}
         alt={member.name}
       />
-      <div className="absolute bottom-0 left-1/2 flex h-[60px] w-[min(310px,90%)] -translate-x-1/2 items-center justify-center gap-3 bg-brand-bg px-5">
-        <span className="font-display text-sm font-medium tracking-[1.4px] text-brand-ink uppercase">{member.name}</span>
+      <div className="absolute bottom-3 left-1/2 flex h-[56px] w-[calc(100%-24px)] max-w-[310px] -translate-x-1/2 items-center justify-center gap-3 bg-brand-bg px-5">
+        <span className="font-display text-sm font-medium tracking-[1.4px] text-brand-ink uppercase">
+          {member.name}
+        </span>
         <span className="h-1 w-1 rounded bg-brand-ink" aria-hidden="true" />
         <span className="font-display text-xs tracking-[1px] text-[#666] uppercase">{member.role}</span>
       </div>

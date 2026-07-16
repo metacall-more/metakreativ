@@ -49,7 +49,7 @@ export default function ServiceBlock({ service, index }) {
             <FeatureList items={service.features} />
 
             <a
-              href="#"
+              href="/services"
               className="inline-flex w-fit items-center gap-4 font-display text-sm font-medium tracking-[1.4px] text-brand-ink-2 uppercase transition-opacity hover:opacity-70"
             >
               view more services

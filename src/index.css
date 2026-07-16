@@ -101,19 +101,8 @@ img {
   pointer-events: none;
 }
 
-.portfolio-card.is-front {
+.portfolio-stack__overlay {
   pointer-events: auto;
-}
-
-.portfolio-card__link,
-.portfolio-card__footer {
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.portfolio-card.is-front .portfolio-card__link,
-.portfolio-card.is-front .portfolio-card__footer {
-  opacity: 1;
 }
 
 .portfolio__counter-roller {
@@ -145,7 +134,7 @@ img {
 }
 
 .clients-marquee__track {
-  animation: clientsMarquee 50s linear infinite;
+  animation: clientsMarquee 7s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {

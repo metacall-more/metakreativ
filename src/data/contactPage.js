@@ -28,6 +28,5 @@ export const CONTACT_NEEDS_OPTIONS = [
   'Mobile App',
   'Software Development',
   'Digital Marketing',
-  'Video Production',
   'Other',
 ];

@@ -5,7 +5,6 @@ export const PORTFOLIO_FILTERS = [
   { id: 'brand-identity', label: 'Brand Identity' },
   { id: 'web-design', label: 'Website Design' },
   { id: 'mobile-app', label: 'Mobile App' },
-  { id: 'video-production', label: 'Video Production' },
   { id: 'digital-marketing', label: 'Digital Marketing' },
 ];
 
@@ -62,7 +61,7 @@ export const PORTFOLIO_PROJECTS = [
     id: 6,
     slug: 'lissus',
     title: 'Lissus',
-    image: '/assets/images/portfolio-page/lonidekor-img.png',
+    image: '/assets/images/portfolio-page/lissus.webp',
     category: 'brand-identity',
     layout: 'wide-right',
   },
