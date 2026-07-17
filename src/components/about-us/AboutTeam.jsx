@@ -1,5 +1,3 @@
-import PillButton from '../PillButton';
-
 const TEAM = [
   { name: 'Besart', role: 'developer', image: '/assets/images/about-us/team-besart.png' },
   { name: 'sinan', role: 'Head of design', image: '/assets/images/about-us/team-sinan.png' },
@@ -40,7 +38,7 @@ export default function AboutTeam() {
         <div className="flex flex-col gap-4 font-display text-sm font-medium tracking-[1.4px] uppercase md:flex-row md:items-center md:justify-between">
           <span className="text-brand-ink-2">professional. dedicated. creative</span>
           <span className="text-brand-red">// Meet The teams</span>
-          <a href="#" className="inline-flex items-center gap-4 text-brand-ink-2 transition-opacity hover:opacity-70 md:justify-end">
+          <a href="#" className="hidden items-center gap-4 text-brand-ink-2 transition-opacity hover:opacity-70 md:justify-end">
             join our team
             <img className="h-4 w-4" src="/assets/icons/arrow-right-1.svg" alt="" />
           </a>
@@ -50,15 +48,6 @@ export default function AboutTeam() {
           At our creative agency, our team is the driving force. With innovative designers, strategic
           thinkers, and passionate storytellers, we craft unique experiences that inspire.
         </h2>
-
-        <PillButton
-          variant="outline"
-          icon="/assets/icons/arrow-right-1.svg"
-          href="#"
-          className="mx-auto mt-8 h-12 w-full max-w-[300px] rounded-[27px] px-6 py-3 md:mt-10"
-        >
-          view all the teams
-        </PillButton>
 
         <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:mt-20 lg:grid-cols-3 lg:gap-[120px]">
           <div className="flex flex-col gap-8 lg:gap-[120px]">

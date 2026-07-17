@@ -3,9 +3,9 @@ function FeatureList({ items }) {
   const columns = [items.slice(0, midpoint), items.slice(midpoint)];
 
   return (
-    <ul className="m-0 grid list-none grid-cols-1 gap-x-10 gap-y-3 p-0 sm:grid-cols-2">
+    <ul className="m-0 flex list-none flex-row gap-x-6 gap-y-3 p-0 sm:grid sm:grid-cols-2 sm:gap-x-10">
       {columns.map((column, colIndex) => (
-        <li key={colIndex} className="contents">
+        <li key={colIndex} className="min-w-0 flex-1 sm:contents">
           <ul className="m-0 flex list-none flex-col gap-3 p-0">
             {column.map((item) => (
               <li key={item} className="flex items-start gap-3 font-body text-sm leading-[1.6] text-brand-ink-2 md:text-base">
@@ -47,14 +47,6 @@ export default function ServiceBlock({ service, index }) {
             </p>
 
             <FeatureList items={service.features} />
-
-            <a
-              href="/services"
-              className="inline-flex w-fit items-center gap-4 font-display text-sm font-medium tracking-[1.4px] text-brand-ink-2 uppercase transition-opacity hover:opacity-70"
-            >
-              view more services
-              <img className="h-4 w-4" src="/assets/icons/arrow-right-1.svg" alt="" />
-            </a>
           </div>
         </div>
       </div>

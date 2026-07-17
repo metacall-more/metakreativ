@@ -5,6 +5,7 @@ import { GORILLA_OVERRIDES } from './gorilla';
 import { HITI_KAMINA_OVERRIDES } from './hitiKamina';
 import { GREEN_RESIDENCE_OVERRIDES } from './greenResidence';
 import { ANNIKEN_OVERRIDES } from './anniken';
+import { LISSUS_OVERRIDES } from './lissus';
 import { ED_REMODELING_OVERRIDES } from './edRemodeling';
 import { GOLDEN_RENT_OVERRIDES } from './goldenRent';
 
@@ -39,6 +40,7 @@ const PROJECT_OVERRIDES = {
   'hiti-kamina': HITI_KAMINA_OVERRIDES,
   'green-residence': GREEN_RESIDENCE_OVERRIDES,
   anniken: ANNIKEN_OVERRIDES,
+  lissus: LISSUS_OVERRIDES,
   'ed-remodeling': ED_REMODELING_OVERRIDES,
   'golden-rent': GOLDEN_RENT_OVERRIDES,
 };

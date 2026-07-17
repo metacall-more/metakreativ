@@ -1,7 +1,12 @@
+import { useState } from 'react';
 import { CONTACT_CHANNELS, CONTACT_NEEDS_OPTIONS } from '../../data/contactPage';
 
+const CONTACT_EMAIL = 'metakreative9@gmail.com';
+const GMAIL_ENDPOINT = import.meta.env.VITE_CONTACT_ENDPOINT;
+const FORMSUBMIT_ENDPOINT = `https://formsubmit.co/ajax/${CONTACT_EMAIL}`;
+
 const fieldClass =
-  'w-full rounded-lg border border-brand-ink/10 px-4 py-3.5 font-body text-base text-brand-ink-2 outline-none transition-colors placeholder:text-brand-gray-400 focus:border-brand-ink/25';
+  'w-full rounded-lg border border-brand-ink/10 px-4 py-3.5 font-body text-base text-brand-ink-2 outline-none transition-colors placeholder:text-brand-gray-400 focus:border-brand-ink/25 disabled:opacity-60';
 
 function ContactIcon({ type }) {
   if (type === 'location') {
@@ -30,7 +35,77 @@ function ContactIcon({ type }) {
   );
 }
 
+async function sendViaGmailScript(payload) {
+  const response = await fetch(GMAIL_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify(payload),
+  });
+
+  const result = await response.json().catch(() => ({}));
+  if (!response.ok || result.success === false) {
+    throw new Error(result.message || 'Something went wrong. Please try again.');
+  }
+}
+
+async function sendViaFormSubmit(form) {
+  const data = new FormData(form);
+  const email = String(data.get('email') || '');
+  const name = String(data.get('name') || '');
+
+  data.set('_replyto', email);
+  data.set('_subject', `Meta Kreativ contact: ${name}`);
+  data.set('Reply-To', email);
+
+  const response = await fetch(FORMSUBMIT_ENDPOINT, {
+    method: 'POST',
+    headers: { Accept: 'application/json' },
+    body: data,
+  });
+
+  const result = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    throw new Error(result.message || 'Something went wrong. Please try again.');
+  }
+}
+
 export default function ContactSection() {
+  const [status, setStatus] = useState('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    const payload = {
+      name: String(formData.get('name') || '').trim(),
+      email: String(formData.get('email') || '').trim(),
+      phone: String(formData.get('phone') || '').trim(),
+      needs: String(formData.get('needs') || '').trim(),
+      message: String(formData.get('message') || '').trim(),
+    };
+
+    setStatus('sending');
+    setErrorMessage('');
+
+    try {
+      if (GMAIL_ENDPOINT) {
+        await sendViaGmailScript(payload);
+      } else {
+        await sendViaFormSubmit(form);
+      }
+
+      form.reset();
+      setStatus('success');
+    } catch (error) {
+      setStatus('error');
+      setErrorMessage(error.message || 'Something went wrong. Please try again.');
+    }
+  }
+
+  const isSending = status === 'sending';
+
   return (
     <section className="bg-brand-bg px-5 py-14 md:px-8 md:py-20 lg:px-0 lg:py-24">
       <div className="mx-auto max-w-(--container-max)">
@@ -67,14 +142,45 @@ export default function ContactSection() {
 
         <form
           className="mx-auto mt-14 max-w-[900px] rounded-2xl p-5 md:mt-16 md:p-8 lg:mt-20 lg:p-10"
-          onSubmit={(e) => e.preventDefault()}
+          onSubmit={handleSubmit}
         >
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="text" name="_honey" className="hidden" tabIndex={-1} autoComplete="off" />
+
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
-            <input type="text" name="name" required placeholder="Name*" className={fieldClass} />
-            <input type="email" name="email" required placeholder="Email*" className={fieldClass} />
-            <input type="tel" name="phone" required placeholder="Phone Number*" className={fieldClass} />
+            <input
+              type="text"
+              name="name"
+              required
+              placeholder="Name*"
+              className={fieldClass}
+              disabled={isSending}
+            />
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="Email*"
+              className={fieldClass}
+              disabled={isSending}
+            />
+            <input
+              type="tel"
+              name="phone"
+              required
+              placeholder="Phone Number*"
+              className={fieldClass}
+              disabled={isSending}
+            />
             <div className="relative">
-              <select name="needs" defaultValue="" required className={`${fieldClass} appearance-none pr-10`}>
+              <select
+                name="needs"
+                defaultValue=""
+                required
+                className={`${fieldClass} appearance-none pr-10`}
+                disabled={isSending}
+              >
                 <option value="" disabled>
                   What are your needs?
                 </option>
@@ -96,18 +202,35 @@ export default function ContactSection() {
               <textarea
                 name="message"
                 rows={6}
+                required
                 placeholder="Write your message..."
                 className={`${fieldClass} min-h-[180px] resize-none pb-16`}
+                disabled={isSending}
               />
               <button
                 type="submit"
-                className="absolute right-4 bottom-4 flex h-11 w-11 items-center justify-center rounded-full bg-brand-ink-2 text-white transition-opacity hover:opacity-80"
+                disabled={isSending}
+                className="absolute right-4 bottom-4 flex h-11 w-11 items-center justify-center rounded-full bg-brand-ink-2 text-white transition-opacity hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-50"
                 aria-label="Send message"
               >
                 <img className="h-4 w-4" src="/assets/icons/message-icon.svg" alt="" />
               </button>
             </div>
           </div>
+
+          {status === 'success' && (
+            <p className="mt-4 m-0 font-body text-sm text-green-700 md:text-base">
+              Message sent. We will get back to you soon.
+            </p>
+          )}
+          {status === 'error' && (
+            <p className="mt-4 m-0 font-body text-sm text-brand-red md:text-base">
+              {errorMessage}
+            </p>
+          )}
+          {isSending && (
+            <p className="mt-4 m-0 font-body text-sm text-brand-ink-2 md:text-base">Sending...</p>
+          )}
         </form>
       </div>
     </section>

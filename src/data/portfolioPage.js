@@ -61,7 +61,7 @@ export const PORTFOLIO_PROJECTS = [
     id: 6,
     slug: 'lissus',
     title: 'Lissus',
-    image: '/assets/images/portfolio-page/lissus.webp',
+    image: '/assets/images/home/lissus.webp',
     category: 'brand-identity',
     layout: 'wide-right',
   },
