@@ -22,9 +22,7 @@ export default function ProjectDetailPage() {
 
   return (
     <div className="bg-brand-bg">
-      <header>
-        <Nav theme="light" activeLink="Portfolio" />
-      </header>
+      <Nav theme="light" activeLink="Portfolio" />
 
       <ProjectDetailHero {...project.meta} />
 

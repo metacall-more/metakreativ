@@ -1,3 +1,4 @@
+import Nav from '../components/Nav';
 import Hero from '../components/Hero';
 import Clients from '../components/Clients';
 import About from '../components/About';
@@ -9,8 +10,11 @@ import Footer from '../components/Footer';
 
 export default function HomePage() {
   return (
-    <>
-      <Hero />
+    <div>
+      <Nav />
+      <div className="-mt-[90px] lg:-mt-[116px]">
+        <Hero />
+      </div>
       <Clients />
       <About />
       <Marquee />
@@ -18,6 +22,6 @@ export default function HomePage() {
       <Portfolio />
       <Testimonials />
       <Footer />
-    </>
+    </div>
   );
 }

@@ -8,10 +8,8 @@ import { SERVICES } from '../data/servicesPage';
 export default function ServicesPage() {
   return (
     <div className="bg-brand-bg">
-      <header className="relative">
-        <Nav theme="light" activeLink="Services" />
-        <ServicesPageHero />
-      </header>
+      <Nav theme="light" activeLink="Services" />
+      <ServicesPageHero />
 
       <div className="pb-8 md:pb-12 lg:pb-16">
         {SERVICES.map((service, index) => (

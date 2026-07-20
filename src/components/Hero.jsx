@@ -1,16 +1,13 @@
-import Nav from './Nav';
 import PillButton from './PillButton';
 
 export default function Hero() {
   return (
-    <header className="relative min-h-[100svh] overflow-hidden text-white lg:min-h-[1080px]">
+    <header className="relative min-h-[100svh] text-white lg:min-h-[1080px]">
       <img
         className="absolute inset-0 z-0 h-full w-full object-cover"
         src="/assets/images/hero-bg.png"
         alt=""
       />
-
-      <Nav />
 
       <div className="relative z-[2] mx-auto max-w-(--container-max) px-5 pt-[clamp(80px,18vw,330px)] md:px-8 lg:px-0 lg:pt-[clamp(140px,26vw,330px)]">
         <h1 className="m-0 max-w-[800px] font-display text-[clamp(34px,4.2vw,80px)] leading-none font-semibold tracking-[1.6px] uppercase">

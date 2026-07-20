@@ -8,10 +8,8 @@ import ContactSection from '../components/contact-page/ContactSection';
 export default function ContactUsPage() {
   return (
     <div className="bg-brand-bg">
-      <header className="relative">
-        <Nav theme="light" activeLink="Contact" />
-        <ContactPageHero />
-      </header>
+      <Nav theme="light" activeLink="Contact" />
+      <ContactPageHero />
 
       <ContactMap />
       <ContactSection />

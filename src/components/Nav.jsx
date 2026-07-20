@@ -14,6 +14,7 @@ const NAV_LINKS = [
 
 export default function Nav({ theme = 'dark', activeLink }) {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const isLight = theme === 'light';
 
@@ -23,6 +24,15 @@ export default function Nav({ theme = 'dark', activeLink }) {
       document.body.style.overflow = '';
     };
   }, [open]);
+
+  useEffect(() => {
+    if (isLight) return;
+
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [isLight]);
 
   const close = () => setOpen(false);
 
@@ -41,86 +51,96 @@ export default function Nav({ theme = 'dark', activeLink }) {
         ? 'text-white'
         : 'text-white/50 hover:text-white';
 
+  const shellClass = isLight
+    ? 'bg-brand-bg/90 backdrop-blur-[20px]'
+    : scrolled
+      ? 'backdrop-blur-[20px]'
+      : '';
+
   return (
     <>
-      <nav
-        className={`mb-4 relative mx-auto flex max-w-(--container-max) items-center gap-10 px-5 pt-[30px] md:px-8 lg:z-[3] lg:px-0 ${open ? 'z-[61]' : 'z-[3]'}`}
+      <div
+        className={`sticky top-0 w-full transition-[background-color,backdrop-filter] duration-300 ${
+          open ? 'z-[61]' : 'z-[60]'
+        } ${shellClass}`}
       >
-        <Link to="/" aria-label="Meta Kreativ home">
-          <Logo theme={theme} />
-        </Link>
+        <nav className="mx-auto flex max-w-(--container-max) items-center gap-10 px-5 pt-[30px] pb-4 md:px-8 lg:px-0">
+          <Link to="/" aria-label="Meta Kreativ home">
+            <Logo theme={theme} />
+          </Link>
 
-        <div
-          className={`hidden h-[70px] w-px shrink-0 lg:block ${isLight ? 'bg-brand-ink/15' : 'bg-white/15'}`}
-          aria-hidden="true"
-        />
+          <div
+            className={`hidden h-[70px] w-px shrink-0 lg:block ${isLight ? 'bg-brand-ink/15' : 'bg-white/15'}`}
+            aria-hidden="true"
+          />
 
-        <div
-          className={`hidden h-[70px] min-w-0 flex-1 items-center justify-between rounded-lg px-[60px] py-5 backdrop-blur-[20px] lg:flex ${
-            isLight ? 'bg-[rgba(5,10,12,0.06)]' : 'bg-[rgba(217,217,217,0.16)]'
-          }`}
-        >
-          <ul className="flex items-center gap-10 font-display text-sm font-medium tracking-[1px] uppercase">
-            {NAV_LINKS.map((link) => (
-              <li key={link.label}>
-                {link.to.startsWith('#') ? (
-                  <a href={link.to} className={`transition-colors duration-200 ${linkClass(isActive(link))}`}>
-                    {link.label}
-                  </a>
-                ) : (
-                  <Link to={link.to} className={`transition-colors duration-200 ${linkClass(isActive(link))}`}>
-                    {link.label}
-                  </Link>
-                )}
-              </li>
+          <div
+            className={`hidden h-[70px] min-w-0 flex-1 items-center justify-between rounded-lg px-[60px] py-5 backdrop-blur-[20px] lg:flex ${
+              isLight ? 'bg-[rgba(5,10,12,0.06)]' : 'bg-[rgba(217,217,217,0.16)]'
+            }`}
+          >
+            <ul className="flex items-center gap-10 font-display text-sm font-medium tracking-[1px] uppercase">
+              {NAV_LINKS.map((link) => (
+                <li key={link.label}>
+                  {link.to.startsWith('#') ? (
+                    <a href={link.to} className={`transition-colors duration-200 ${linkClass(isActive(link))}`}>
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link to={link.to} className={`transition-colors duration-200 ${linkClass(isActive(link))}`}>
+                      {link.label}
+                    </Link>
+                  )}
+                </li>
+              ))}
+            </ul>
+            <button className="h-4 w-4 shrink-0" aria-label="Search">
+              <img
+                className={`h-full w-full ${isLight ? 'brightness-0' : ''}`}
+                src="/assets/icons/search.svg"
+                alt=""
+              />
+            </button>
+          </div>
+
+          <PillButton
+            variant={isLight ? 'outline' : 'outline-light'}
+            icon={isLight ? '/assets/icons/arrow-right-1.svg' : '/assets/icons/arrow-right-white.svg'}
+            href="/contact-us"
+            className="hidden lg:inline-flex"
+          >
+            Get In Touch
+          </PillButton>
+
+          <button
+            className="hidden h-[26px] w-[26px] shrink-0 grid-cols-2 content-center justify-center gap-3.5 lg:grid"
+            aria-label="Open menu"
+          >
+            {Array.from({ length: 4 }).map((_, i) => (
+              <span
+                key={i}
+                className={`h-1.5 w-1.5 rounded-[10px] ${isLight ? 'bg-brand-ink-2' : 'bg-white'}`}
+              />
             ))}
-          </ul>
-          <button className="h-4 w-4 shrink-0" aria-label="Search">
-            <img
-              className={`h-full w-full ${isLight ? 'brightness-0' : ''}`}
-              src="/assets/icons/search.svg"
-              alt=""
-            />
           </button>
-        </div>
 
-        <PillButton
-          variant={isLight ? 'outline' : 'outline-light'}
-          icon={isLight ? '/assets/icons/arrow-right-1.svg' : '/assets/icons/arrow-right-white.svg'}
-          href="/contact-us"
-          className="hidden lg:inline-flex"
-        >
-          Get In Touch
-        </PillButton>
-
-        <button
-          className="hidden h-[26px] w-[26px] shrink-0 grid-cols-2 content-center justify-center gap-3.5 lg:grid"
-          aria-label="Open menu"
-        >
-          {Array.from({ length: 4 }).map((_, i) => (
-            <span
-              key={i}
-              className={`h-1.5 w-1.5 rounded-[10px] ${isLight ? 'bg-brand-ink-2' : 'bg-white'}`}
-            />
-          ))}
-        </button>
-
-        <button
-          type="button"
-          className={`hamburger ml-auto flex h-11 w-11 shrink-0 items-center justify-center rounded-full border backdrop-blur-md transition-colors duration-300 lg:hidden ${
-            isLight
-              ? 'border-brand-ink/20 bg-brand-ink/5 hover:bg-brand-ink/10'
-              : 'border-white/20 bg-white/10 hover:bg-white/20'
-          } ${open ? 'is-open' : ''} ${isLight ? 'hamburger--light' : ''}`}
-          aria-label={open ? 'Close menu' : 'Open menu'}
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-        >
-          <span className="hamburger-line" />
-          <span className="hamburger-line" />
-          <span className="hamburger-line" />
-        </button>
-      </nav>
+          <button
+            type="button"
+            className={`hamburger ml-auto flex h-11 w-11 shrink-0 items-center justify-center rounded-full border backdrop-blur-md transition-colors duration-300 lg:hidden ${
+              isLight
+                ? 'border-brand-ink/20 bg-brand-ink/5 hover:bg-brand-ink/10'
+                : 'border-white/20 bg-white/10 hover:bg-white/20'
+            } ${open ? 'is-open' : ''} ${isLight ? 'hamburger--light' : ''}`}
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+          >
+            <span className="hamburger-line" />
+            <span className="hamburger-line" />
+            <span className="hamburger-line" />
+          </button>
+        </nav>
+      </div>
 
       <div
         className={`mobile-menu fixed inset-0 z-50 lg:hidden ${open ? 'is-open' : ''}`}

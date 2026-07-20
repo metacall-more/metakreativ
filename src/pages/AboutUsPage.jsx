@@ -12,10 +12,8 @@ import AboutCta from '../components/about-us/AboutCta';
 export default function AboutUsPage() {
   return (
     <div className="bg-brand-bg">
-      <header className="relative">
-        <Nav theme="light" activeLink="About" />
-        <AboutPageHero />
-      </header>
+      <Nav theme="light" activeLink="About" />
+      <AboutPageHero />
       <AboutWelcome />
       <AboutStory />
       <AboutMission />

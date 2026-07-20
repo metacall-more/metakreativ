@@ -11,10 +11,8 @@ export default function PortfolioPage() {
 
   return (
     <div className="bg-brand-bg">
-      <header className="relative">
-        <Nav theme="light" activeLink="Portfolio" />
-        <PortfolioPageHero />
-      </header>
+      <Nav theme="light" activeLink="Portfolio" />
+      <PortfolioPageHero />
 
       <PortfolioFilters activeFilter={activeFilter} onFilterChange={setActiveFilter} />
       <PortfolioMasonry activeFilter={activeFilter} />
