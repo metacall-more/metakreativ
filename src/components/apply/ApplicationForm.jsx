@@ -1,4 +1,5 @@
 import { useEffect, useId, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ExperienceStep from './ExperienceStep';
 import PersonalInformationStep from './PersonalInformationStep';
 import StepIndicator from './StepIndicator';
@@ -6,6 +7,7 @@ import { MAX_CV_FILES } from './DocumentsStep';
 import { FORM_STEPS, TOTAL_STEPS, initialFormData } from './types';
 
 const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/info@metakreativ.de';
+const SUBMIT_FRAME = 'application-submit-frame';
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX_CV_BYTES = 5 * 1024 * 1024;
 const ALLOWED_CV_EXTENSIONS = new Set(['.pdf', '.doc', '.docx', '.jpg', '.jpeg', '.png']);
@@ -52,7 +54,9 @@ const createCvFileId = () => `${Date.now()}-${Math.random().toString(36).slice(2
 
 export default function ApplicationForm() {
   const formId = useId();
+  const navigate = useNavigate();
   const hasMovedStep = useRef(false);
+  const awaitingReply = useRef(false);
 
   const [currentStep, setCurrentStep] = useState(1);
   const [status, setStatus] = useState('idle');
@@ -244,6 +248,12 @@ export default function ApplicationForm() {
     }
   };
 
+  const finishSubmit = () => {
+    if (!awaitingReply.current) return;
+    awaitingReply.current = false;
+    navigate('/applynow/thank-you');
+  };
+
   const handleSubmit = (event) => {
     if (currentStep !== TOTAL_STEPS) {
       event.preventDefault();
@@ -305,6 +315,7 @@ export default function ApplicationForm() {
 
     setFieldErrors({});
     setStatus('sending');
+    awaitingReply.current = true;
   };
 
   const currentLabel = FORM_STEPS[currentStep - 1]?.label ?? 'Application';
@@ -332,10 +343,17 @@ export default function ApplicationForm() {
         <p className="font-instrument mt-2 text-sm leading-6 text-[#555555] sm:text-base">Two short steps. You will be done in a few minutes.</p>
       </div>
 
+      <iframe
+        name={SUBMIT_FRAME}
+        title="Application upload"
+        className="pointer-events-none absolute h-px w-px border-0 opacity-0"
+        onLoad={finishSubmit}
+      />
       <form
         action={FORMSUBMIT_ENDPOINT}
         method="POST"
         encType="multipart/form-data"
+        target={SUBMIT_FRAME}
         onSubmit={handleSubmit}
         noValidate
         aria-label="Blockchain Developer application form"
