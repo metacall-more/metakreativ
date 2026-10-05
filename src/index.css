@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=Six+Caps&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=Instrument+Sans:wght@400;500;600;700&family=Six+Caps&family=Syne:wght@600;700&display=swap');
 @import url('https://api.fontshare.com/v2/css?f[]=clash-display@500,600&display=swap');
 @import "tailwindcss";
 
@@ -72,11 +72,38 @@ img {
   transition-delay: 0.15s;
 }
 
+.font-instrument {
+  font-family: "Instrument Sans", Helvetica, Arial, sans-serif;
+}
+
+.travel-font {
+  font-family: "Syne", Helvetica, Arial, sans-serif;
+}
+
+.animate-fade-up {
+  animation: career-fade-up 0.8s var(--animation-delay, 0s) ease both;
+}
+
+@keyframes career-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  .animate-fade-up {
+    animation: none;
   }
 }
 
