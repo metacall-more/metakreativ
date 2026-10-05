@@ -1,5 +1,4 @@
 import { useEffect, useId, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import ExperienceStep from './ExperienceStep';
 import PersonalInformationStep from './PersonalInformationStep';
 import StepIndicator from './StepIndicator';
@@ -7,7 +6,6 @@ import { MAX_CV_FILES } from './DocumentsStep';
 import { FORM_STEPS, TOTAL_STEPS, initialFormData } from './types';
 
 const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/info@metakreativ.de';
-const SUBMIT_FRAME = 'application-submit-frame';
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX_CV_BYTES = 5 * 1024 * 1024;
 const ALLOWED_CV_EXTENSIONS = new Set(['.pdf', '.doc', '.docx', '.jpg', '.jpeg', '.png']);
@@ -54,10 +52,7 @@ const createCvFileId = () => `${Date.now()}-${Math.random().toString(36).slice(2
 
 export default function ApplicationForm() {
   const formId = useId();
-  const navigate = useNavigate();
-  const formRef = useRef(null);
   const hasMovedStep = useRef(false);
-  const awaitingReply = useRef(false);
 
   const [currentStep, setCurrentStep] = useState(1);
   const [status, setStatus] = useState('idle');
@@ -249,16 +244,9 @@ export default function ApplicationForm() {
     }
   };
 
-  const finishSubmit = () => {
-    if (!awaitingReply.current) return;
-    awaitingReply.current = false;
-    navigate('/applynow/thank-you');
-  };
-
   const handleSubmit = (event) => {
-    event.preventDefault();
-
     if (currentStep !== TOTAL_STEPS) {
+      event.preventDefault();
       handleNext();
       return;
     }
@@ -267,6 +255,7 @@ export default function ApplicationForm() {
 
     const errors = validateFields(STEP_FIELDS[currentStep]);
     if (Object.keys(errors).length > 0) {
+      event.preventDefault();
       setFieldErrors((prev) => ({ ...prev, ...errors }));
       setStatus('idle');
       const first = STEP_FIELDS[currentStep].find((key) => errors[key]);
@@ -277,6 +266,7 @@ export default function ApplicationForm() {
     const allKeys = FORM_STEPS.flatMap((step) => STEP_FIELDS[step.id]);
     const allErrors = validateFields(allKeys);
     if (Object.keys(allErrors).length > 0) {
+      event.preventDefault();
       setFieldErrors(allErrors);
       setStatus('idle');
       const firstStep = FORM_STEPS.find((step) => STEP_FIELDS[step.id].some((key) => allErrors[key]));
@@ -290,25 +280,31 @@ export default function ApplicationForm() {
       return;
     }
 
-    const form = formRef.current;
+    const form = event.currentTarget;
     const file = cvFiles[0]?.file;
-    const input = form?.querySelector('input[type="file"][name="attachment"]');
-    if (!form || !file || !input) {
+    const input = form.querySelector('input[type="file"][name="attachment"]');
+    if (!file || !input) {
+      event.preventDefault();
       setFieldErrors((prev) => ({ ...prev, cv: 'Please upload your resume.' }));
       setStatus('idle');
       scrollToField('cv');
       return;
     }
 
-    const transfer = new DataTransfer();
-    transfer.items.add(file);
-    input.files = transfer.files;
+    const current = input.files?.[0];
+    const sameFile =
+      current && current.name === file.name && current.size === file.size && current.lastModified === file.lastModified;
+    if (!sameFile) {
+      const transfer = new DataTransfer();
+      transfer.items.add(file);
+      input.files = transfer.files;
+    }
+
+    const next = form.querySelector('input[name="_next"]');
+    if (next) next.value = `${window.location.origin}/applynow/thank-you`;
 
     setFieldErrors({});
     setStatus('sending');
-    awaitingReply.current = true;
-    form.target = SUBMIT_FRAME;
-    form.submit();
   };
 
   const currentLabel = FORM_STEPS[currentStep - 1]?.label ?? 'Application';
@@ -336,14 +332,7 @@ export default function ApplicationForm() {
         <p className="font-instrument mt-2 text-sm leading-6 text-[#555555] sm:text-base">Two short steps. You will be done in a few minutes.</p>
       </div>
 
-      <iframe
-        name={SUBMIT_FRAME}
-        title="Application upload"
-        className="pointer-events-none absolute h-px w-px opacity-0"
-        onLoad={finishSubmit}
-      />
       <form
-        ref={formRef}
         action={FORMSUBMIT_ENDPOINT}
         method="POST"
         encType="multipart/form-data"
@@ -354,6 +343,7 @@ export default function ApplicationForm() {
       >
         <input type="hidden" name="_subject" value={emailSubject} readOnly />
         <input type="hidden" name="_replyto" value={formData.email.trim()} readOnly />
+        <input type="hidden" name="_next" value="https://metakreativ.de/applynow/thank-you" />
         <input type="hidden" name="_template" value="table" />
         <input type="hidden" name="_captcha" value="false" />
         <input type="hidden" name="Position" value="Blockchain Developer" />
